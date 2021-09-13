@@ -1,0 +1,28 @@
+{
+  "name": "6info-2021-1",
+  "version": "1.0.0",
+  "description": "Sistema Web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Sistema",
+    "Web"
+  ],
+  "author": "Kaua M Cousillas",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "multer": "^1.4.3",
+    "nodemon": "^2.0.12",
+    "path": "^0.12.7",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "req-flash": "0.0.3",
+    "sequelize": "^6.6.5",
+    "sequelize-cli": "^6.2.0"
+  }
+}
