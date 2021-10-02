@@ -10,7 +10,7 @@
     "Sistema",
     "Web"
   ],
-  "author": "@maiakauaa",
+  "author": "@bainloko",
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.6",
