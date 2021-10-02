@@ -3,7 +3,7 @@
     "dialect": "postgres",
     "host": "localhost",
     "username": "postgres",
-    "password": "6263034",
+    "password": "postgres",
     "database": "info2021-1",
     "define": {
         "timestamps": true
@@ -13,14 +13,14 @@
     "dialect": "postgres",
     "host": "localhost",
     "username": "postgres",
-    "password": "6263034",
+    "password": "postgres",
     "database": "info2021-1"
   },
   "production": {
     "dialect": "postgres",
     "host": "localhost",
     "username": "postgres",
-    "password": "6263034",
+    "password": "postgres",
     "database": "info2021-1"
   }
 }

@@ -10,7 +10,7 @@
     "Sistema",
     "Web"
   ],
-  "author": "Kaua M Cousillas",
+  "author": "@maiakauaa",
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.6",
