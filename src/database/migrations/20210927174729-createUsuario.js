@@ -29,10 +29,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-
-      telefone: { //somente números
-        type: Sequelize.INTEGER
-      },
       
       senha: {
         type: Sequelize.STRING,

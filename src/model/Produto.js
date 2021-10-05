@@ -11,9 +11,10 @@ class Produto extends Model {
         super.init({
             //o id não aparece aqui, pois é autoincremento. o mesmo vale pra outros valores automáticos
             nome: DataTypes.STRING,
-            valor: DataTypes.DOUBLE,
-        },
-        { sequelize, freezeTableName: true }
+            valor: DataTypes.DOUBLE
+        }, { sequelize, tableName: "produtos" }
         );
     }
 }
+
+module.exports = Produto;

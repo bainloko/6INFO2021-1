@@ -4,18 +4,22 @@
 * 13/09/2021
 */
 
-const Usuario = require("../model/Usuario.js");
+const Usuario = require("../model/Usuario");
 
 async function abreAdd(req, res){
-    res.send("Olá Mundo!");
+    res.render("add.ejs");
 }
 
 async function add(req, res){
-    Usuario.create({nome, email, telefone, senha, foto});
+    const { nome, email, senha, foto } = req.body;
+
+    await Usuario.create({nome, email, senha, foto}).then((usuario) => {
+        res.render("index.ejs");
+    });
 }
 
 async function list(req, res){
-    res.send("Olá Mundo!");
+    res.render("list.ejs");
 }
 
 async function listFiltro(req, res){
@@ -24,10 +28,11 @@ async function listFiltro(req, res){
 
 async function abreEdit(req, res){
     res.send("Olá Mundo!");
+    //res.render("edit.ejs");
 }
 
 async function edit(req, res){
-    res.send("Olá Mundo!");
+    res.render("edit.ejs");
 }
 
 async function del(req, res){

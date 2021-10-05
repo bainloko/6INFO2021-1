@@ -12,11 +12,7 @@ module.exports = {
      * Add altering commands here.
      */
     
-    await queryInterface.addColumn(
-      "produtos",
-      "tamanho",
-      Sequelize.DOUBLE
-    );
+    await queryInterface.addColumn("produtos", "tamanho", Sequelize.DOUBLE);
   },
 
   down: async (queryInterface, Sequelize) => {
