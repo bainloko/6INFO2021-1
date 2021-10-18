@@ -7,7 +7,7 @@
 const Usuario = require("../model/Usuario");
 
 async function abreAdd(req, res){
-    res.render("usuario/add.ejs", {});
+    res.render("add.ejs", {});
 }
 
 async function add(req, res){
@@ -30,7 +30,7 @@ async function add(req, res){
 async function list(req, res){
     try {
         const usuarios = await Usuario.findAll();
-        res.render("usuario/list.ejs", { "Usuarios": usuarios });
+        res.render("list.ejs", { "Usuarios": usuarios });
     } catch(error) {
         res.send("Erro " + error + ". Tente novamente mais tarde...");
     }
@@ -49,7 +49,7 @@ async function del(req, res){
                 id: req.params.id,
             },
         });
-        res.redirect("/admin/usuario");
+        res.redirect("/admin/usuarios");
     } catch(error) {
         res.send("Erro " + error + ". Tente novamente mais tarde...");
     }

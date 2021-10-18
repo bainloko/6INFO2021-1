@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, "public"))); //junta a pasta desejad
     res.send("Oi " + req.params.nome + "!");
 }); //dois pontos significa recebimento de um parâmetro, no caso o nome */
 
-app.use("/admin/usuario", rotas);
+app.use("/admin/usuarios", rotas);
 
 app.listen(porta, function(req, res){
     console.log("Servidor funcionando na porta " + porta + "!");
