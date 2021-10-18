@@ -5,14 +5,14 @@
 */
 
 const express = require("express");
+const app = express(); //aaaaaaaaaaaaaaaaaaaaaa - esse precisava estar no começo, ao invés de estar na linha QUINZEEE
 const path = require("path");
 const porta = 3000;
 
 //importação de rotas
 const rotas = require("./routes/routes");
 
-const app = express();
-
+require("./database/index"); //aaaaaaaaaaaaaaaaaaaaaa - esqueci completamente desse require... por ISSOOOOOOOOOOOO tava vindo "length" de undefined, dois erros babacas!!!!
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); //prepara o sistema pra receber dados do formulário
 

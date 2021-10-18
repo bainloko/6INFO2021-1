@@ -17,27 +17,27 @@ module.exports = {
         type: Sequelize.BIGINT,
         primaryKey: true,
         autoIncrement: true,
-        allowNull: false
+        allowNull: false,
       },
 
       nome: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
 
       valor: {
         type: Sequelize.DOUBLE,
-        allowNull: false
+        allowNull: false,
       },
 
       createdAt: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: false,
       },
 
       updatedAt: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: false,
       }
     });
   },

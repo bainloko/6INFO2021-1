@@ -13,7 +13,7 @@ class Usuario extends Model {
             nome: DataTypes.STRING,
             email: DataTypes.STRING,
             senha: DataTypes.STRING,
-            foto: DataTypes.STRING
+            foto: DataTypes.STRING,
         }, { sequelize, freezeTableName: true }
         );
     }

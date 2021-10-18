@@ -17,22 +17,22 @@ module.exports = {
         type: Sequelize.BIGINT,
         primaryKey: true,
         autoIncrement: true,
-        allowNull: false
+        allowNull: false,
       },
 
       nome: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
 
       email: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       
       senha: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
 
       foto: {
@@ -41,12 +41,12 @@ module.exports = {
 
       createdAt: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: false,
       },
 
       updatedAt: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: false,
       }
     });
   },
