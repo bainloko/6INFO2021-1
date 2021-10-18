@@ -12,7 +12,7 @@ module.exports = {
      * Add altering commands here.
      */
     
-    await queryInterface.createTable("produtos", {
+    await queryInterface.createTable("Produto", {
       id: {
         type: Sequelize.BIGINT,
         primaryKey: true,
@@ -47,6 +47,6 @@ module.exports = {
      * Add reverting commands here.
      */
 
-    await queryInterface.dropTable("produtos");
+    await queryInterface.dropTable("Produto");
   }
 };

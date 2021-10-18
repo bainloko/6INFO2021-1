@@ -11,15 +11,28 @@ async function abreAdd(req, res){
 }
 
 async function add(req, res){
-    const { nome, email, senha, foto } = req.body;
+    var { nome, email, senha } = req.body;
 
-    await Usuario.create({nome, email, senha, foto}).then((usuario) => {
-        res.render("index.ejs");
-    });
+    try {
+        if(req.file != undefined){
+            var foto = req.file.filename;
+        }
+
+        await Usuario.create({ nome, email, senha, foto }).then((usuario) => {
+            res.send("O usuário " + usuario.nome + " foi criado com sucesso!");
+        });
+    } catch(error) {
+        res.send("Erro " + error + ". Tente novamente mais tarde...");
+    }
 }
 
 async function list(req, res){
-    res.render("list.ejs");
+    try {
+        const usuarios = await Usuario.findAll();
+        res.render("usuario/list.ejs", {"Usuarios": usuarios});
+    } catch(error) {
+        res.send("Erro " + error + ". Tente novamente mais tarde...");
+    }
 }
 
 async function listFiltro(req, res){
@@ -36,7 +49,16 @@ async function edit(req, res){
 }
 
 async function del(req, res){
-    res.send("Olá Mundo!");
+    try {
+        await Usuario.destroy({
+            where: {
+                id: req.params.id,
+            },
+        });
+        res.redirect("/admin/usuarios");
+    } catch(error) {
+        res.send("Erro " + error + ". Tente novamente mais tarde...");
+    }
 }
 
 module.exports = {abreAdd, add, list, listFiltro, abreEdit, edit, del}

@@ -12,7 +12,7 @@ module.exports = {
      * Add altering commands here.
      */
     
-    await queryInterface.addColumn("produtos", "tamanho", Sequelize.DOUBLE);
+    await queryInterface.addColumn("Produto", "tamanho", Sequelize.DOUBLE);
   },
 
   down: async (queryInterface, Sequelize) => {
@@ -20,6 +20,6 @@ module.exports = {
      * Add reverting commands here.
      */
     
-    await queryInterface.removeColumn("produtos", "tamanho");
+    await queryInterface.removeColumn("Produto", "tamanho");
   }
 };

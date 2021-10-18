@@ -7,14 +7,14 @@
 const { Model, DataTypes } = require("sequelize");
 
 class Usuario extends Model {
-    static init(Sequelize){
+    static init(sequelize){
         super.init({
             //o id não aparece aqui, pois é autoincremento. o mesmo vale pra outros valores automáticos
             nome: DataTypes.STRING,
             email: DataTypes.STRING,
             senha: DataTypes.STRING,
             foto: DataTypes.STRING
-        }, { Sequelize, tableName: "usuarios" }
+        }, { sequelize, freezeTableName: true }
         );
     }
 }

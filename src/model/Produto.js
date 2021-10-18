@@ -12,7 +12,7 @@ class Produto extends Model {
             //o id não aparece aqui, pois é autoincremento. o mesmo vale pra outros valores automáticos
             nome: DataTypes.STRING,
             valor: DataTypes.DOUBLE
-        }, { sequelize, tableName: "produtos" }
+        }, { sequelize, freezeTableName: true }
         );
     }
 }

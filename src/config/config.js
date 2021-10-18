@@ -5,12 +5,12 @@
 */
 
 module.exports = {
-    "dialect": "postgres",
-    "host": "localhost",
     "username": "postgres",
     "password": "postgres",
     "database": "info2021-1",
+    "dialect": "postgres",
+    "host": "localhost",
     "define": {
         "timestamps": true
-    }
-}
+    },
+};

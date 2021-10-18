@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); //prepara o sistema pra receber dados do formulário
 
 app.set("view engine", "ejs");
-app.set("views", "./views");
+app.set("views", "./views/usuario");
 
 app.use(express.static(path.join(__dirname, "public"))); //junta a pasta desejada, a partir da pasta do index, e a deixa disponível para acesso por usuários no /
 
@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, "public"))); //junta a pasta desejad
     res.send("Oi " + req.params.nome + "!");
 }); //dois pontos significa recebimento de um parâmetro, no caso o nome */
 
-app.use("/admin/usuario", rotas);
+app.use("/admin/usuarios", rotas);
 
 app.listen(porta, function(req, res){
     console.log("Servidor funcionando na porta " + porta + "!");
