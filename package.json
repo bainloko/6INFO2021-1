@@ -23,6 +23,6 @@
     "pg-hstore": "^2.3.4",
     "req-flash": "0.0.3",
     "sequelize": "^6.6.5",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^5.0.0"
   }
 }
