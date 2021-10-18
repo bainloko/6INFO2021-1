@@ -49,7 +49,7 @@ async function del(req, res){
                 id: req.params.id,
             },
         });
-        res.redirect("/admin/usuarios");
+        res.redirect("/admin/usuario");
     } catch(error) {
         res.send("Erro " + error + ". Tente novamente mais tarde...");
     }
