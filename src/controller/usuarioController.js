@@ -17,8 +17,7 @@ async function add(req, res){
         if(req.file != undefined){
             var foto = req.file.filename;
         }
-
-        console.log(req.body + "\n" + req.file);
+        
         await Usuario.create({ nome, email, senha, foto }).then((usuario) => {
             res.send("O usuário " + usuario.nome + " foi criado com sucesso!");
         });
