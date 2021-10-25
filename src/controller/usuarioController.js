@@ -5,16 +5,17 @@
 */
 
 const Usuario = require("../model/Usuario");
+const passport = require("../config/passport");
 
 async function abreAdd(req, res){
-    res.render("add.ejs", {});
+    res.render("usuario/add.ejs", {});
 }
 
 async function add(req, res){
     var { nome, email, senha } = req.body;
 
     try {
-        if(req.file != undefined){
+        if (req.file != undefined){
             var foto = req.file.filename;
         }
         
@@ -29,7 +30,7 @@ async function add(req, res){
 async function list(req, res){
     try {
         const usuarios = await Usuario.findAll();
-        res.render("list.ejs", { "Usuarios": usuarios });
+        res.render("usuario/list.ejs", { "Usuarios" : usuarios });
     } catch(error) {
         res.send("Erro " + error + ". Tente novamente mais tarde...");
     }
@@ -54,4 +55,8 @@ async function del(req, res){
     }
 }
 
-module.exports = {abreAdd, add, list, listFiltro, abreEdit, edit, del}
+async function index(req, res){
+    res.render("index.ejs", { msg: req.flash("msg") });
+}
+
+module.exports = {abreAdd, add, list, listFiltro, abreEdit, edit, del, index}
