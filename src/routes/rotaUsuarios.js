@@ -7,7 +7,7 @@
 const express = require("express");
 const roteador = express.Router(); //inicializa as rotas do express
 const usuarioController = require("../controller/usuarioController");
-const upload = require("../config/multer");
+const upload = require("../config/multerUsuarios");
 
 //ABRE ADD
 roteador.get("/add", usuarioController.abreAdd);
@@ -15,9 +15,9 @@ roteador.get("/add", usuarioController.abreAdd);
 roteador.post("/add", upload.single("foto"), usuarioController.add);
 
 //LIST
-roteador.get("/", usuarioController.list);
+roteador.get("/list", usuarioController.list);
 //LIST FILTRO
-roteador.post("/", usuarioController.listFiltro);
+roteador.post("/list", usuarioController.listFiltro);
 
 //ABRE EDIT
 roteador.get("/edit", usuarioController.abreEdit);

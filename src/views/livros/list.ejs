@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!--
+        * @bainloko
+        * PROGRAMAÇÃO IV
+        * 18/10/2021
+    -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: justify;
+        }
+
+        table {
+            border-collapse: collapse;
+            border: 3px solid black;
+            letter-spacing: 1px;
+            font-size: 18px;
+        }
+
+        td, th {
+            border: 1px solid gray;
+            padding: 10px 20px;
+        }
+
+        td { 
+            text-align: center;
+        }
+
+        #linha {
+            border: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        img { /* arrumar xD */
+            width: auto;
+            height: 200px;
+        }
+
+        img:hover {
+            cursor: pointer;
+            display: flex;
+            margin-top: 5px;
+            width: 400px;
+            height: auto;
+        }
+
+        #mensagem {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h3>Listagem dos Livros Cadastrados</h3>
+    <span><a href="/admin/livros/add">Para adicionar outro livro...</a></span>
+    <br>
+    <br>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Livro</th>
+            <th>Autor</th>
+            <th>Valor</th>
+            <th>Descrição</th>
+            <th>Número de páginas</th>
+            <th>Editora</th>
+            <th>Data da publicação</th>
+            <th>Foto</th>
+            <th>|</th>
+            <th>Deletar Livro</th>
+        </tr>
+        <% Livros.forEach(function(livro){ %>
+        <tr>
+            <td><%=livro.id%></td>
+            <td><%=livro.nome%></td>
+            <td><%=livro.autor%></td>
+            <td>R$ <%=livro.valor%></td>
+            <td><%=livro.descricao%></td>
+            <td><%=livro.paginas%></td>
+            <td><%=livro.editora%></td>
+            <td><%=livro.dataPubli%></td>
+            <td>
+                <img src="/upload/livros/<%=livro.fotoCapa%>" alt="foto de algum livro" />
+            </td>
+            <td id="linha">
+                <label>|</label>
+                <label>|</label>
+                <label>|</label>
+                <label>|</label>
+                <label>|</label>
+                <label>|</label>
+                <label>|</label>
+                <label>|</label>
+                <label>|</label>
+                <label>|</label>
+            </td>
+            <td>
+                <a href="/admin/livros/del/<%=livro.id%>">Deletar Livro</a>
+            </td>
+        </tr>
+        <% }); %>
+    </table>
+    <br>
+    <hr>
+    <h3 id="mensagem"></h3>
+</body>
+</html>

@@ -10,7 +10,7 @@ exports.autenticacao = function(){
             return next();
         } else {
             req.flash("msg", "Você precisa estar autenticado para acessar essa página!");
-            res.redirect("/admin");
+            res.redirect("/admin/");
         }
     };
 };

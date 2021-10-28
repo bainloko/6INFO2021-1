@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!--
+        * @bainloko
+        * PROGRAMAÇÃO IV
+        * 28/10/2021
+    -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: justify;
+        }
+
+        form {
+            width: 700px;
+            padding: 1.1em;
+            border: 1px solid #CCC;
+            border-radius: 1em;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        label {
+            width: 250px;
+            display: inline-block;
+            text-align: right;
+            font-size: 21px;
+        }
+
+        textarea, input {
+            border: 1px solid #999;
+            margin-top: 3px;
+            width: calc(100% - 283px);
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        input:focus {
+            border-color: #000;
+        }
+
+        #fotoInp {
+            width: calc(100% - 280px);
+        }
+
+        #addInp {
+            width: 100%;
+            margin: 1 auto;
+            display: flex;
+        }
+
+        .obrigatorio {
+            color: red;
+            font-weight: 1000;
+        }
+    </style>
+</head>
+<body>
+    <!--<h1>Olá Mundo! retirar o espaço... pra funcionar com localhost:3000/nome, ex "kaua": < %=nome%>!</h1>-->
+    <h1>Adicionar Livros</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        <h3>Adicionar Livros</h3>
+        <h3>Nos campos onde há '*', o preenchimento é obrigatório!</h3>
+        <ul>
+            <li>
+                <span class="obrigatorio">*</span><label>Livro:&ensp;</label><input type="text" name="nome" placeholder="Digite o nome do livro" required />
+            </li>
+            <li>
+                <span class="obrigatorio">*</span><label>Autor:&ensp;</label><input type="text" name="autor" placeholder="Digite o nome do autor" required />
+            </li>
+            <li>
+                <span class="obrigatorio">*</span><label>Valor:&ensp;</label><input type="number" name="valor" placeholder="Digite o valor (em R$) do livro" required />
+            </li>
+            <li>
+                &ensp;<label>Descrição:&ensp;</label><textarea name="descricao" placeholder="Digite uma descrição sobre o livro"></textarea>
+            </li>
+            <li>
+                <span class="obrigatorio">*</span><label>Número de Páginas:&ensp;</label><input type="number" name="paginas" placeholder="Digite o número de páginas do livro" required />
+            </li>
+            <li>
+                &ensp;<label>Editora:&ensp;</label><input type="text" name="editora" placeholder="Digite o nome da editora que publicou o livro" />
+            </li>
+            <li>
+                &ensp;<label>Data da publicação:&ensp;</label><input type="text" name="dataPubli" placeholder="Digite a data da publicação do livro" />
+            </li>
+            <li>
+                <span class="obrigatorio">*</span><label>Foto:&ensp;</label><input id="fotoInp" type="file" name="fotoCapa" />
+                <input id="addInp" type="submit" value="Adicionar Livro" />
+            </li>
+        </ul>
+    </form>
+</body>
+</html>

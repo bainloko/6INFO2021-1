@@ -1,26 +1,26 @@
 /*
 * @bainloko
 * PROGRAMACAO IV
-* 13/09/2021
+* 27/10/2021
 */
 
-const Usuario = require("../model/Usuario");
+const Livro = require("../model/Livro");
 const passport = require("../config/passport");
 
 async function abreAdd(req, res){
-    res.render("usuarios/add.ejs", {});
+    res.render("livros/add.ejs", {});
 }
 
 async function add(req, res){
-    var { nome, email, senha } = req.body;
+    var { nome, autor, valor, descricao, paginas, editora, dataPubli } = req.body;
 
     try {
         if (req.file != undefined){
-            var foto = req.file.filename;
+            var fotoCapa = req.file.filename;
         }
         
-        await Usuario.create({ nome, email, senha, foto }).then((usuario) => {
-            res.render("/admin/usuarios/list", { msg: req.flash("O usuário " + usuario.nome + " foi criado com sucesso!") });
+        await Livro.create({ nome, autor, valor, descricao, paginas, editora, dataPubli, fotoCapa }).then((livro) => {
+            res.render("/admin/livros/list", { msg: req.flash("O livro " + livro.nome + " foi adicionado com sucesso!") });
         });
     } catch(error) {
         res.send("Erro " + error + ". Tente novamente mais tarde...");
@@ -29,8 +29,8 @@ async function add(req, res){
 
 async function list(req, res){
     try {
-        const usuarios = await Usuario.findAll();
-        res.render("usuarios/list.ejs", { "Usuarios" : usuarios });
+        const livros = await Livro.findAll();
+        res.render("livros/list.ejs", { "Livros" : livros });
     } catch(error) {
         res.send("Erro " + error + ". Tente novamente mais tarde...");
     }
@@ -44,12 +44,12 @@ async function edit(req, res){}
 
 async function del(req, res){
     try {
-        await Usuario.destroy({
+        await Livro.destroy({
             where: {
                 id: req.params.id,
             },
         });
-        res.redirect("/admin/usuarios/list", { msg: req.flash("O usuário " + req.params.nome + " (" + req.params.email + ")" + " foi deletado com sucesso!") });
+        res.redirect("/admin/livros/list", { msg: req.flash("O livro " + req.params.nome + " foi deletado com sucesso!") });
     } catch(error) {
         res.send("Erro " + error + ". Tente novamente mais tarde...");
     }

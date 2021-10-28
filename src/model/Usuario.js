@@ -14,7 +14,7 @@ class Usuario extends Model {
             email: DataTypes.STRING,
             senha: DataTypes.STRING,
             foto: DataTypes.STRING,
-        }, { sequelize, freezeTableName: true }
+        }, { sequelize, tableName: "Usuarios" }
         );
     }
 }

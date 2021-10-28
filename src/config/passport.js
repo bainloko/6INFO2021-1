@@ -14,7 +14,7 @@ passport.serializeUser(function(user, done){
 });
 
 passport.deserializeUser(function(id, done){
-    Usuario.findByPk(id).then(function(user, err){ //o problema estava aqui, esqueci de desinverter a ordem, de "err, user" para "user, err"
+    Usuario.findByPk(id).then(function(user, err){ //o problema estava aqui, esqueci de desinverter a ordem, de "user, err" para "err, user" 
         done(err, user);
     });
 });
