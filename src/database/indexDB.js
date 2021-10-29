@@ -10,7 +10,11 @@ const Usuario = require("../model/Usuario");
 const Livro = require("../model/Livro");
 const conexao = new Sequelize(dbConfig);
 
-Usuario.init(conexao);
-Livro.init(conexao);
+try {
+    Usuario.init(conexao);
+    Livro.init(conexao);
+} catch (error) {
+    res.send("Erro BD " + error + ". Tente novamente mais tarde...");
+}
 
 module.exports = conexao;

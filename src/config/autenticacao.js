@@ -9,8 +9,17 @@ exports.autenticacao = function(){
         if (req.isAuthenticated()){
             return next();
         } else {
-            req.flash("msg", "Você precisa estar autenticado para acessar essa página!");
-            res.redirect("/admin/");
+            res.render("auth.ejs", { msg: req.flash("msg", "Você não está logado. Autentique-se acima para ter acesso à página desejada.") });
         }
-    };
+    }
+};
+
+exports.index = function(){
+    return function(req, res){
+        if (req.isAuthenticated()){
+            return res.render("index.ejs", { msg: req.flash("msg") });
+        } else {
+            res.render("auth.ejs", { msg: req.flash("msg", "Você não está logado. Autentique-se acima para ter acesso à página desejada.") });
+        }
+    }
 };

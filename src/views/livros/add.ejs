@@ -67,7 +67,9 @@
 <body>
     <!--<h1>Olá Mundo! retirar o espaço... pra funcionar com localhost:3000/nome, ex "kaua": < %=nome%>!</h1>-->
     <h1>Adicionar Livros</h1>
-
+    <span><a href="/admin">Voltar para a página inicial</a></span>
+    <br>
+    <br>
     <form method="post" enctype="multipart/form-data">
         <h3>Adicionar Livros</h3>
         <h3>Nos campos onde há '*', o preenchimento é obrigatório!</h3>
@@ -79,7 +81,7 @@
                 <span class="obrigatorio">*</span><label>Autor:&ensp;</label><input type="text" name="autor" placeholder="Digite o nome do autor" required />
             </li>
             <li>
-                <span class="obrigatorio">*</span><label>Valor:&ensp;</label><input type="number" name="valor" placeholder="Digite o valor (em R$) do livro" required />
+                <span class="obrigatorio">*</span><label>Valor:&ensp;</label><input type="number" step="0.01" name="valor" placeholder="Digite o valor (em R$) do livro" required />
             </li>
             <li>
                 &ensp;<label>Descrição:&ensp;</label><textarea name="descricao" placeholder="Digite uma descrição sobre o livro"></textarea>
@@ -91,7 +93,7 @@
                 &ensp;<label>Editora:&ensp;</label><input type="text" name="editora" placeholder="Digite o nome da editora que publicou o livro" />
             </li>
             <li>
-                &ensp;<label>Data da publicação:&ensp;</label><input type="text" name="dataPubli" placeholder="Digite a data da publicação do livro" />
+                &ensp;<label>Ano da publicação:&ensp;</label><input type="text" name="anoPubli" placeholder="Digite o ano da publicação do livro" />
             </li>
             <li>
                 <span class="obrigatorio">*</span><label>Foto:&ensp;</label><input id="fotoInp" type="file" name="fotoCapa" />

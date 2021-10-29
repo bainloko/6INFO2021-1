@@ -9,24 +9,24 @@ const roteador = express.Router(); //inicializa as rotas do express
 const usuarioController = require("../controller/usuarioController");
 const livroController = require("../controller/livroController");
 const passport = require("../config/passport");
+const aut = require("../config/autenticacao");
 
-roteador.get("/",
-    async function index(req, res){
-        try {
-            res.render("index.ejs", { msg: req.flash("msg") });
-        } catch (error) {
-            res.send("Erro " + error + ". Tente novamente mais tarde...");
-        }
-    }
-);
-
-roteador.get("/usuarios", usuarioController.auth);
-roteador.get("/livros", livroController.auth);
+roteador.get("/*", aut.autenticacao(), aut.index());
+roteador.get("/usuarios", usuarioController.list);
+roteador.get("/livros", livroController.list);
 
 //LOG-IN
+roteador.post("/",
+    passport.authenticate("local", {
+        successRedirect: "/admin",
+        failureRedirect: "/admin",
+        failureFlash: true,
+    })
+);
+
 roteador.post("/usuarios",
     passport.authenticate("local", {
-        successRedirect: "/admin/usuarios/list",
+        successRedirect: "/admin/usuarios",
         failureRedirect: "/admin",
         failureFlash: true,
     })
@@ -34,7 +34,7 @@ roteador.post("/usuarios",
 
 roteador.post("/livros",
     passport.authenticate("local", {
-        successRedirect: "/admin/livros/list",
+        successRedirect: "/admin/livros",
         failureRedirect: "/admin",
         failureFlash: true,
     })

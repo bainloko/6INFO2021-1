@@ -38,7 +38,7 @@ passport.use(
                 }
 
                 if (user.senha != password){
-                    return done(null, false, req.flash("msg", "Senha incorreta!!"));
+                    return done(null, false, req.flash("msg", "Senha incorreta!"));
                 }
 
                 return done(null, user);

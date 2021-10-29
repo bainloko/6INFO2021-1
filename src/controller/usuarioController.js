@@ -20,7 +20,8 @@ async function add(req, res){
         }
         
         await Usuario.create({ nome, email, senha, foto }).then((usuario) => {
-            res.render("/admin/usuarios/list", { msg: req.flash("O usuário " + usuario.nome + " foi criado com sucesso!") });
+            req.flash("msg", "O usuário " + usuario.nome + " foi criado com sucesso!");
+            res.redirect("/admin/usuarios");
         });
     } catch(error) {
         res.send("Erro " + error + ". Tente novamente mais tarde...");
@@ -30,7 +31,7 @@ async function add(req, res){
 async function list(req, res){
     try {
         const usuarios = await Usuario.findAll();
-        res.render("usuarios/list.ejs", { "Usuarios" : usuarios });
+        res.render("usuarios/list.ejs", { msg: req.flash("msg"), "Usuarios" : usuarios });
     } catch(error) {
         res.send("Erro " + error + ". Tente novamente mais tarde...");
     }
@@ -49,14 +50,11 @@ async function del(req, res){
                 id: req.params.id,
             },
         });
-        res.redirect("/admin/usuarios/list", { msg: req.flash("O usuário " + req.params.nome + " (" + req.params.email + ")" + " foi deletado com sucesso!") });
+        req.flash("O usuário " + req.params.nome + " (" + req.params.email + ")" + " foi deletado com sucesso!");
+        res.redirect("/admin/usuarios");
     } catch(error) {
         res.send("Erro " + error + ". Tente novamente mais tarde...");
     }
 }
 
-async function auth(req, res){
-    res.render("auth.ejs", { msg: req.flash("Você não está logado. Autentique-se acima para ter acesso à página desejada.") });
-}
-
-module.exports = {abreAdd, add, list, listFiltro, abreEdit, edit, del, auth}
+module.exports = {abreAdd, add, list, listFiltro, abreEdit, edit, del}

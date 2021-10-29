@@ -20,19 +20,20 @@ async function add(req, res){
         }
         
         await Livro.create({ nome, autor, valor, descricao, paginas, editora, dataPubli, fotoCapa }).then((livro) => {
-            res.render("/admin/livros/list", { msg: req.flash("O livro " + livro.nome + " foi adicionado com sucesso!") });
+            req.flash("msg", "O livro " + livro.nome + " foi adicionado com sucesso!");
+            res.redirect("/admin/livros");
         });
     } catch(error) {
-        res.send("Erro " + error + ". Tente novamente mais tarde...");
+        res.send("Erro lController " + error + ". Tente novamente mais tarde...");
     }
 }
 
 async function list(req, res){
     try {
         const livros = await Livro.findAll();
-        res.render("livros/list.ejs", { "Livros" : livros });
+        res.render("livros/list.ejs", { msg: req.flash("msg"), "Livros" : livros });
     } catch(error) {
-        res.send("Erro " + error + ". Tente novamente mais tarde...");
+        res.send("Erro lController " + error + ". Tente novamente mais tarde...");
     }
 }
 
@@ -49,14 +50,11 @@ async function del(req, res){
                 id: req.params.id,
             },
         });
-        res.redirect("/admin/livros/list", { msg: req.flash("O livro " + req.params.nome + " foi deletado com sucesso!") });
+        req.flash("O livro " + req.params.nome + " foi deletado com sucesso!");
+        res.redirect("/admin/livros");
     } catch(error) {
-        res.send("Erro " + error + ". Tente novamente mais tarde...");
+        res.send("Erro lController " + error + ". Tente novamente mais tarde...");
     }
 }
 
-async function auth(req, res){
-    res.render("auth.ejs", { msg: req.flash("Você não está logado. Autentique-se acima para ter acesso à página desejada.") });
-}
-
-module.exports = {abreAdd, add, list, listFiltro, abreEdit, edit, del, auth}
+module.exports = {abreAdd, add, list, listFiltro, abreEdit, edit, del}

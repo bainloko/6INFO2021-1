@@ -16,7 +16,7 @@ class Livro extends Model {
             descricao: DataTypes.STRING,
             paginas: DataTypes.INTEGER,
             editora: DataTypes.STRING,
-            dataPubli: DataTypes.DATE,
+            anoPubli: DataTypes.INTEGER,
             fotoCapa: DataTypes.STRING,
         }, { sequelize, tableName: "Livros" }
         );

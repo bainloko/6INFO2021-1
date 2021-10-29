@@ -49,8 +49,8 @@ module.exports = {
           type: Sequelize.STRING,
         },
   
-        dataPubli: {
-          type: Sequelize.DATE,
+        anoPubli: {
+          type: Sequelize.INTEGER,
         },
 
         fotoCapa: {

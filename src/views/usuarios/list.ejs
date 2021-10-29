@@ -40,25 +40,30 @@
 
         img { /* arrumar xD */
             width: auto;
-            height: 200px;
+            height: 120px;
         }
 
         img:hover {
             cursor: pointer;
             display: flex;
             margin-top: 5px;
-            width: 400px;
+            width: 180px;
             height: auto;
         }
 
         #mensagem {
             color: red;
         }
+
+        span {
+            padding: 5px;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
     <h3>Listagem dos Usuários Cadastrados</h3>
-    <span><a href="/admin/usuarios/add">Para adicionar outro usuário...</a></span>
+    <span><a href="/admin/usuarios/add">Para adicionar outro usuário...</a></span><span><a href="/admin">Voltar para a página inicial</a></span>
     <br>
     <br>
     <table>
@@ -100,6 +105,8 @@
     </table>
     <br>
     <hr>
-    <h3 id="mensagem"></h3>
+    <h3 id="mensagem">
+        <%= msg %>
+    </h3>
 </body>
 </html>

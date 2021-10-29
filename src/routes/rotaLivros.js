@@ -15,9 +15,9 @@ roteador.get("/add", livroController.abreAdd);
 roteador.post("/add", upload.single("foto"), livroController.add);
 
 //LIST
-roteador.get("/list", livroController.list);
+roteador.get("/", livroController.list);
 //LIST FILTRO
-roteador.post("/list", livroController.listFiltro);
+roteador.post("/", livroController.listFiltro);
 
 //ABRE EDIT
 roteador.get("/edit", livroController.abreEdit);
