@@ -37,7 +37,7 @@ module.exports = {
         },
   
         descricao: {
-          type: Sequelize.STRING,
+          type: Sequelize.TEXT,
         },
         
         paginas: {

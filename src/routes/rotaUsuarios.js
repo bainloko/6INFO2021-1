@@ -25,6 +25,6 @@ roteador.get("/edit", usuarioController.abreEdit);
 roteador.post("/edit", usuarioController.edit);
 
 //DELETE
-roteador.get("/del:id", usuarioController.del);
+roteador.get("/del/:id", usuarioController.del);
 
 module.exports = roteador; //exporta a lista de rotas da aplicação - CRUD (create, read, update, delete)

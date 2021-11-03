@@ -5,7 +5,6 @@
 */
 
 const Usuario = require("../model/Usuario");
-const passport = require("../config/passport");
 
 async function abreAdd(req, res){
     res.render("usuarios/add.ejs", {});
@@ -24,7 +23,7 @@ async function add(req, res){
             res.redirect("/admin/usuarios");
         });
     } catch(error) {
-        res.send("Erro " + error + ". Tente novamente mais tarde...");
+        res.send("Erro uController " + error + ". Tente novamente mais tarde...");
     }
 }
 
@@ -33,7 +32,7 @@ async function list(req, res){
         const usuarios = await Usuario.findAll();
         res.render("usuarios/list.ejs", { msg: req.flash("msg"), "Usuarios" : usuarios });
     } catch(error) {
-        res.send("Erro " + error + ". Tente novamente mais tarde...");
+        res.send("Erro uController " + error + ". Tente novamente mais tarde...");
     }
 }
 
@@ -45,15 +44,15 @@ async function edit(req, res){}
 
 async function del(req, res){
     try {
+        req.flash("msg", "O usuário " + req.params.nome + " (" + req.params.email + ")" + " foi deletado com sucesso!");
         await Usuario.destroy({
             where: {
                 id: req.params.id,
             },
         });
-        req.flash("O usuário " + req.params.nome + " (" + req.params.email + ")" + " foi deletado com sucesso!");
         res.redirect("/admin/usuarios");
     } catch(error) {
-        res.send("Erro " + error + ". Tente novamente mais tarde...");
+        res.send("Erro uController " + error + ". Tente novamente mais tarde...");
     }
 }
 

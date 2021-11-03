@@ -12,6 +12,7 @@
     <title>Painel Administrativo</title>
     <style>
         body {
+            margin: 2em;
             font-family: Arial, Helvetica, sans-serif;
             text-align: justify;
         }
@@ -25,11 +26,26 @@
 
         td, th {
             border: 1px solid gray;
-            padding: 10px 20px;
+            padding: 10px 20px; 
+            text-align: center;
         }
 
-        td { 
-            text-align: center;
+        #foto {
+            width: 150px;
+            height: 220px;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+
+        img:hover {
+            cursor: pointer;
+            display: flex;
+            margin-top: 5px;
+            width: 150px;
+            height: auto;
         }
 
         #linha {
@@ -38,18 +54,6 @@
             flex-direction: column;
         }
 
-        img { /* arrumar xD */
-            width: auto;
-            height: 120px;
-        }
-
-        img:hover {
-            cursor: pointer;
-            display: flex;
-            margin-top: 5px;
-            width: 180px;
-            height: auto;
-        }
         #mensagem {
             color: red;
         }
@@ -77,7 +81,7 @@
             <th>Data da publicação</th>
             <th>Foto</th>
             <th>|</th>
-            <th>Deletar Livro</th>
+            <th>Ações</th>
         </tr>
         <% Livros.forEach(function(livro){ %>
         <tr>
@@ -89,7 +93,7 @@
             <td><%=livro.paginas%></td>
             <td><%=livro.editora%></td>
             <td><%=livro.dataPubli%></td>
-            <td>
+            <td id="foto">
                 <img src="/upload/livros/<%=livro.fotoCapa%>" alt="foto de algum livro" />
             </td>
             <td id="linha">
@@ -113,7 +117,11 @@
     <br>
     <hr>
     <h3 id="mensagem">
+        <% if ( msg ) { %>
         <%= msg %>
+        <% } else { %>
+        <%= "" %>
+        <% } %>
     </h3>
 </body>
 </html>

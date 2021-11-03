@@ -34,14 +34,14 @@ passport.use(
                 }
 
                 if (!user){
-                    return done(null, false, req.flash("msg", "Usuário não existe!"));
+                    return done(null, false, req.flash("loginMessage", "Usuário não existe!"));
                 }
 
                 if (user.senha != password){
-                    return done(null, false, req.flash("msg", "Senha incorreta!"));
+                    return done(null, false, req.flash("loginMessage", "Senha incorreta!"));
                 }
 
-                return done(null, user);
+                return done(null, user, req.flash("loginSuccess", "Bem-vindo " + username + "!"));
             });
         }
     )

@@ -13,7 +13,7 @@ class Livro extends Model {
             nome: DataTypes.STRING,
             autor: DataTypes.STRING,
             valor: DataTypes.DOUBLE,
-            descricao: DataTypes.STRING,
+            descricao: DataTypes.TEXT,
             paginas: DataTypes.INTEGER,
             editora: DataTypes.STRING,
             anoPubli: DataTypes.INTEGER,

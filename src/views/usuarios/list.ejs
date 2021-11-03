@@ -12,6 +12,7 @@
     <title>Painel Administrativo</title>
     <style>
         body {
+            margin: 2em;
             font-family: Arial, Helvetica, sans-serif;
             text-align: justify;
         }
@@ -25,22 +26,18 @@
 
         td, th {
             border: 1px solid gray;
-            padding: 10px 20px;
-        }
-
-        td { 
+            padding: 10px 20px; 
             text-align: center;
         }
 
-        #linha {
-            border: none;
-            display: flex;
-            flex-direction: column;
+        #foto {
+            width: 180px;
+            height: 220px;
         }
 
-        img { /* arrumar xD */
-            width: auto;
-            height: 120px;
+        img {
+            width: 100px;
+            height: 100px;
         }
 
         img:hover {
@@ -49,6 +46,12 @@
             margin-top: 5px;
             width: 180px;
             height: auto;
+        }
+
+        #linha {
+            border: none;
+            display: flex;
+            flex-direction: column;
         }
 
         #mensagem {
@@ -74,7 +77,7 @@
             <th>Senha</th>
             <th>Foto</th>
             <th>|</th>
-            <th>Deletar Usuário</th>
+            <th>Ações</th>
         </tr>
         <% Usuarios.forEach(function(usuario){ %>
         <tr>
@@ -82,7 +85,7 @@
             <td><%=usuario.nome%></td>
             <td><%=usuario.email%></td>
             <td><%=usuario.senha%></td>
-            <td>
+            <td id="foto">
                 <img src="/upload/usuarios/<%=usuario.foto%>" alt="foto de algum usuário" />
             </td>
             <td id="linha">
@@ -106,7 +109,11 @@
     <br>
     <hr>
     <h3 id="mensagem">
+        <% if ( msg ) { %>
         <%= msg %>
+        <% } else { %>
+        <%= "" %>
+        <% } %>
     </h3>
 </body>
 </html>

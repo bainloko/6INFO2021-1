@@ -12,6 +12,7 @@
     <title>Login Administrador</title>
     <style>
         body {
+            margin: 2em;
             font-family: Arial, Helvetica, sans-serif;
             text-align: justify;
         }
@@ -72,7 +73,11 @@
         <br>
         <hr>
         <h3 id="mensagem">
+            <% if ( msg ) { %>
             <%= msg %>
+            <% } else { %>
+            <%= "Você não está logado. Autentique-se acima para ter acesso à página desejada." %>
+            <% } %>
         </h3>
     </article>
     <footer>

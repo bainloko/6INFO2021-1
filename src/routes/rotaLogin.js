@@ -11,9 +11,10 @@ const livroController = require("../controller/livroController");
 const passport = require("../config/passport");
 const aut = require("../config/autenticacao");
 
-roteador.get("/*", aut.autenticacao(), aut.index());
-roteador.get("/usuarios", usuarioController.list);
-roteador.get("/livros", livroController.list);
+//rotas... TODOS OS BUGS CORRIGIDOS, DE NOVO EU FIQUEI QUEBRANDO A CABEÇA PRA NADA, OS PROBLEMAS ERAM POR CAUSA DA ORDEM INVERTIDA AAAAAAAAAAAAAAAAAAAAA
+roteador.get("/", aut.index(), aut.autenticacao());
+roteador.get("/usuarios", aut.autenticacao(), usuarioController.list);
+roteador.get("/livros", aut.autenticacao(), livroController.list);
 
 //LOG-IN
 roteador.post("/",

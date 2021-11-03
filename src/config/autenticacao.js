@@ -7,9 +7,9 @@
 exports.autenticacao = function(){
     return function(req, res, next){
         if (req.isAuthenticated()){
-            return next();
+            return next(); //NEXT MIDDLEWARE FUNCTION!!!!!!!! outra coisa que demorei um tempo pra entender...
         } else {
-            res.render("auth.ejs", { msg: req.flash("msg", "Você não está logado. Autentique-se acima para ter acesso à página desejada.") });
+            res.redirect("/admin");
         }
     }
 };
@@ -17,9 +17,9 @@ exports.autenticacao = function(){
 exports.index = function(){
     return function(req, res){
         if (req.isAuthenticated()){
-            return res.render("index.ejs", { msg: req.flash("msg") });
+            res.render("index.ejs", { msg: req.flash("loginSuccess") });
         } else {
-            res.render("auth.ejs", { msg: req.flash("msg", "Você não está logado. Autentique-se acima para ter acesso à página desejada.") });
+            res.render("auth.ejs", { msg: req.flash("loginMessage") });
         }
     }
 };

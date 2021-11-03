@@ -12,7 +12,7 @@ const upload = require("../config/multerLivros");
 //ABRE ADD
 roteador.get("/add", livroController.abreAdd);
 //ADD
-roteador.post("/add", upload.single("foto"), livroController.add);
+roteador.post("/add", upload.single("fotoCapa"), livroController.add);
 
 //LIST
 roteador.get("/", livroController.list);
@@ -25,6 +25,6 @@ roteador.get("/edit", livroController.abreEdit);
 roteador.post("/edit", livroController.edit);
 
 //DELETE
-roteador.get("/del:id", livroController.del);
+roteador.get("/del/:id", livroController.del);
 
 module.exports = roteador; //exporta a lista de rotas da aplicação - CRUD (create, read, update, delete)
