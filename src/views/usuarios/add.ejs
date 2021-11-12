@@ -69,28 +69,38 @@
     </style>
 </head>
 <body>
-    <h1>Adicionar Usuários</h1>
-    <span><a href="/admin">Voltar para a página inicial</a></span>
-    <br>
-    <br>
-    <form method="post" enctype="multipart/form-data">
-        <h3>Adicionar Usuários</h3>
-        <h3>Nos campos onde há '*', o preenchimento é obrigatório!</h5>
-        <ul>
-            <li>
-                <span class="obrigatorio">*</span><label>Nome:&ensp;</label><input type="text" name="nome" placeholder="Digite seu nome" />
-            </li>
-            <li>
-                <span class="obrigatorio">*</span><label>E-mail:&ensp;</label><input type="email" name="email" placeholder="Digite seu e-mail" />
-            </li>
-            <li>
-                <span class="obrigatorio">*</span><label>Senha:&ensp;</label><input type="password" name="senha" placeholder="Digite sua senha" />
-            </li>
-            <li>
-                <span class="obrigatorio">*</span><label>Foto:&ensp;</label><input id="fotoInp" type="file" name="foto" />
-                <input id="addInp" type="submit" value="Adicionar Usuário" />
-            </li>
-        </ul>
-    </form>
+    <nav>
+        <span><a href="/admin">Voltar para a página inicial</a></span>
+    </nav>
+    <header>
+        <h1>Adicionar Usuários</h1>
+        <br>
+        <br>        
+    </header>
+    <article>
+        <form method="post" enctype="multipart/form-data">
+            <h3>Adicionar Usuários</h3>
+            <h3>Nos campos onde há '*', o preenchimento é obrigatório!</h5>
+            <ul>
+                <li>
+                    <span class="obrigatorio">*</span><label>Nome:&ensp;</label><input type="text" name="nome" placeholder="Digite seu nome" />
+                </li>
+                <li>
+                    <span class="obrigatorio">*</span><label>E-mail:&ensp;</label><input type="email" name="email" placeholder="Digite seu e-mail" />
+                </li>
+                <li>
+                    <span class="obrigatorio">*</span><label>Senha:&ensp;</label><input type="password" name="senha" placeholder="Digite sua senha" />
+                </li>
+                <li>
+                    <span class="obrigatorio">*</span><label>Foto:&ensp;</label><input id="fotoInp" type="file" name="foto" />
+                    <input id="addInp" type="submit" value="Adicionar Usuário" />
+                </li>
+            </ul>
+        </form>
+    </article>
+    <footer>
+        <br>
+        <h3>© Kauã Maia, 2021 - Contato <a href="https://github.com/bainloko">Github.com/bainloko</a></h3>
+    </footer>
 </body>
 </html>

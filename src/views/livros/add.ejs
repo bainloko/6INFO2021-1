@@ -75,40 +75,50 @@
     </style>
 </head>
 <body>
-    <h1>Adicionar Livros</h1>
-    <span><a href="/admin">Voltar para a página inicial</a></span>
-    <br>
-    <br>
-    <form method="post" enctype="multipart/form-data">
-        <h3>Adicionar Livros</h3>
-        <h3>Nos campos onde há '*', o preenchimento é obrigatório!</h3>
-        <ul>
-            <li>
-                <span class="obrigatorio">*</span><label>Livro:&ensp;</label><input type="text" name="nome" placeholder="Digite o nome do livro" required />
-            </li>
-            <li>
-                <span class="obrigatorio">*</span><label>Autor:&ensp;</label><input type="text" name="autor" placeholder="Digite o nome do autor" required />
-            </li>
-            <li>
-                <span class="obrigatorio">*</span><label>Valor:&ensp;</label><input type="number" step="0.01" name="valor" placeholder="Digite o valor (em R$) do livro" required />
-            </li>
-            <li>
-                &ensp;<label>Descrição:&ensp;</label><textarea name="descricao" rows="2" maxlength="1000" placeholder="Digite uma descrição sobre o livro"></textarea>
-            </li>
-            <li>
-                <span class="obrigatorio">*</span><label>Número de Páginas:&ensp;</label><input type="number" name="paginas" placeholder="Digite o número de páginas do livro" required />
-            </li>
-            <li>
-                &ensp;<label>Editora:&ensp;</label><input type="text" name="editora" placeholder="Digite o nome da editora que publicou o livro" />
-            </li>
-            <li>
-                &ensp;<label>Ano da publicação:&ensp;</label><input type="text" name="anoPubli" placeholder="Digite o ano da publicação do livro" />
-            </li>
-            <li>
-                <span class="obrigatorio">*</span><label>Foto:&ensp;</label><input id="fotoInp" type="file" name="fotoCapa" />
-                <input id="addInp" type="submit" value="Adicionar Livro" />
-            </li>
-        </ul>
-    </form>
+    <nav>
+        <span><a href="/admin">Voltar para a página inicial</a></span>
+    </nav>
+    <header>
+        <h1>Adicionar Livros</h1>
+        <br>
+        <br>
+    </header>
+    <article>
+        <form method="post" enctype="multipart/form-data">
+            <h3>Adicionar Livros</h3>
+            <h3>Nos campos onde há '*', o preenchimento é obrigatório!</h3>
+            <ul>
+                <li>
+                    <span class="obrigatorio">*</span><label>Livro:&ensp;</label><input type="text" name="nome" placeholder="Digite o nome do livro" required />
+                </li>
+                <li>
+                    <span class="obrigatorio">*</span><label>Autor:&ensp;</label><input type="text" name="autor" placeholder="Digite o nome do autor" required />
+                </li>
+                <li>
+                    <span class="obrigatorio">*</span><label>Valor:&ensp;</label><input type="number" step="0.01" name="valor" placeholder="Digite o valor (em R$) do livro" required />
+                </li>
+                <li>
+                    &ensp;<label>Descrição:&ensp;</label><textarea name="descricao" rows="2" maxlength="1000" placeholder="Digite uma descrição sobre o livro"></textarea>
+                </li>
+                <li>
+                    <span class="obrigatorio">*</span><label>Número de Páginas:&ensp;</label><input type="number" name="paginas" placeholder="Digite o número de páginas do livro" required />
+                </li>
+                <li>
+                    &ensp;<label>Editora:&ensp;</label><input type="text" name="editora" placeholder="Digite o nome da editora que publicou o livro" />
+                </li>
+                <li>
+                    &ensp;<label>Ano da publicação:&ensp;</label><input type="text" name="anoPubli" placeholder="Digite o ano da publicação do livro" />
+                </li>
+                <li>
+                    <span class="obrigatorio">*</span><label>Foto:&ensp;</label><input id="fotoInp" type="file" name="fotoCapa" />
+                    <input id="addInp" type="submit" value="Adicionar Livro" />
+                </li>
+            </ul>
+        </form>
+    </article>
+    <footer>
+        <br>
+        <h3>© Kauã Maia, 2021 - Contato <a href="https://github.com/bainloko">Github.com/bainloko</a></h3>
+    </footer>
 </body>
 </html>

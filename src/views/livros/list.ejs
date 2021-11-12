@@ -65,63 +65,73 @@
     </style>
 </head>
 <body>
-    <h3>Listagem dos Livros Cadastrados</h3>
-    <span><a href="/admin/livros/add">Para adicionar outro livro...</a></span><span><a href="/admin">Voltar para a página inicial</a></span>
-    <br>
-    <br>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Livro</th>
-            <th>Autor</th>
-            <th>Valor</th>
-            <th>Descrição</th>
-            <th>Número de páginas</th>
-            <th>Editora</th>
-            <th>Data da publicação</th>
-            <th>Foto</th>
-            <th>|</th>
-            <th>Ações</th>
-        </tr>
-        <% Livros.forEach(function(livro){ %>
-        <tr>
-            <td><%=livro.id%></td>
-            <td><%=livro.nome%></td>
-            <td><%=livro.autor%></td>
-            <td>R$ <%=livro.valor%></td>
-            <td><%=livro.descricao%></td>
-            <td><%=livro.paginas%></td>
-            <td><%=livro.editora%></td>
-            <td><%=livro.dataPubli%></td>
-            <td id="foto">
-                <img src="/upload/livros/<%=livro.fotoCapa%>" alt="foto de algum livro" />
-            </td>
-            <td id="linha">
-                <label>|</label>
-                <label>|</label>
-                <label>|</label>
-                <label>|</label>
-                <label>|</label>
-                <label>|</label>
-                <label>|</label>
-                <label>|</label>
-                <label>|</label>
-                <label>|</label>
-            </td>
-            <td>
-                <a href="/admin/livros/del/<%=livro.id%>">Deletar Livro</a>
-            </td>
-        </tr>
-        <% }); %>
-    </table>
-    <br>
-    <hr>
-    <h3 id="mensagem">
-        <% if ( msg ) { %>
-        <%= msg %>
-        <% } else { %>
-        <%= "" %>
-        <% } %>
-    </h3>
+    <nav>
+        <span><a href="/admin/livros/add">Para adicionar outro livro...</a></span><span><a href="/admin">Voltar para a página inicial</a></span>  
+    </nav>
+    <header>
+        <h3>Listagem dos Livros Cadastrados</h3>
+        <br>
+        <br>
+    </header>
+    <article>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Livro</th>
+                <th>Autor</th>
+                <th>Valor</th>
+                <th>Descrição</th>
+                <th>Número de páginas</th>
+                <th>Editora</th>
+                <th>Data da publicação</th>
+                <th>Foto</th>
+                <th>|</th>
+                <th>Ações</th>
+            </tr>
+            <% Livros.forEach(function(livro){ %>
+            <tr>
+                <td><%=livro.id%></td>
+                <td><%=livro.nome%></td>
+                <td><%=livro.autor%></td>
+                <td>R$ <%=livro.valor%></td>
+                <td><%=livro.descricao%></td>
+                <td><%=livro.paginas%></td>
+                <td><%=livro.editora%></td>
+                <td><%=livro.dataPubli%></td>
+                <td id="foto">
+                    <img src="/upload/livros/<%=livro.fotoCapa%>" alt="foto de algum livro" />
+                </td>
+                <td id="linha">
+                    <label>|</label>
+                    <label>|</label>
+                    <label>|</label>
+                    <label>|</label>
+                    <label>|</label>
+                    <label>|</label>
+                    <label>|</label>
+                    <label>|</label>
+                    <label>|</label>
+                    <label>|</label>
+                </td>
+                <td>
+                    <a href="/admin/livros/del/<%=livro.id%>">Deletar Livro</a>
+                </td>
+            </tr>
+            <% }); %>
+        </table>
+        <br>
+        <hr>
+        <h3 id="mensagem">
+            <% if ( msg ) { %>
+            <%= msg %>
+            <% } else { %>
+            <%= "" %>
+            <% } %>
+        </h3>
+    </article>
+    <footer>
+        <br>
+        <h3>© Kauã Maia, 2021 - Contato <a href="https://github.com/bainloko">Github.com/bainloko</a></h3>
+    </footer>
 </body>
 </html>

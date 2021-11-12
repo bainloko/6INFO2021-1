@@ -65,55 +65,65 @@
     </style>
 </head>
 <body>
-    <h3>Listagem dos Usuários Cadastrados</h3>
-    <span><a href="/admin/usuarios/add">Para adicionar outro usuário...</a></span><span><a href="/admin">Voltar para a página inicial</a></span>
-    <br>
-    <br>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>E-mail</th>
-            <th>Senha</th>
-            <th>Foto</th>
-            <th>|</th>
-            <th>Ações</th>
-        </tr>
-        <% Usuarios.forEach(function(usuario){ %>
-        <tr>
-            <td><%=usuario.id%></td>
-            <td><%=usuario.nome%></td>
-            <td><%=usuario.email%></td>
-            <td><%=usuario.senha%></td>
-            <td id="foto">
-                <img src="/upload/usuarios/<%=usuario.foto%>" alt="foto de algum usuário" />
-            </td>
-            <td id="linha">
-                <label>|</label>
-                <label>|</label>
-                <label>|</label>
-                <label>|</label>
-                <label>|</label>
-                <label>|</label>
-                <label>|</label>
-                <label>|</label>
-                <label>|</label>
-                <label>|</label>
-            </td>
-            <td>
-                <a href="/admin/usuarios/del/<%=usuario.id%>">Deletar Usuário</a>
-            </td>
-        </tr>
-        <% }); %>
-    </table>
-    <br>
-    <hr>
-    <h3 id="mensagem">
-        <% if ( msg ) { %>
-        <%= msg %>
-        <% } else { %>
-        <%= "" %>
-        <% } %>
-    </h3>
+    <nav>
+        <span><a href="/admin/usuarios/add">Para adicionar outro usuário...</a></span><span><a href="/admin">Voltar para a página inicial</a></span>   
+    </nav>
+    <header>
+        <h3>Listagem dos Usuários Cadastrados</h3>
+        <br>
+        <br>
+    </header>
+    <article>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Senha</th>
+                <th>Foto</th>
+                <th>|</th>
+                <th>Ações</th>
+            </tr>
+            <% Usuarios.forEach(function(usuario){ %>
+            <tr>
+                <td><%=usuario.id%></td>
+                <td><%=usuario.nome%></td>
+                <td><%=usuario.email%></td>
+                <td><%=usuario.senha%></td>
+                <td id="foto">
+                    <img src="/upload/usuarios/<%=usuario.foto%>" alt="foto de algum usuário" />
+                </td>
+                <td id="linha">
+                    <label>|</label>
+                    <label>|</label>
+                    <label>|</label>
+                    <label>|</label>
+                    <label>|</label>
+                    <label>|</label>
+                    <label>|</label>
+                    <label>|</label>
+                    <label>|</label>
+                    <label>|</label>
+                </td>
+                <td>
+                    <a href="/admin/usuarios/del/<%=usuario.id%>">Deletar Usuário</a>
+                </td>
+            </tr>
+            <% }); %>
+        </table>
+        <br>
+        <hr>
+        <h3 id="mensagem">
+            <% if ( msg ) { %>
+            <%= msg %>
+            <% } else { %>
+            <%= "" %>
+            <% } %>
+        </h3>
+    </article>
+    <footer>
+        <br>
+        <h3>© Kauã Maia, 2021 - Contato <a href="https://github.com/bainloko">Github.com/bainloko</a></h3>
+    </footer>
 </body>
 </html>
