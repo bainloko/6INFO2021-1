@@ -5,9 +5,14 @@
 */
 
 const Livro = require("../model/Livro");
+const { Op } = require("sequelize");
 
 async function abreAdd(req, res){
-    res.render("livros/add.ejs", {});
+    try {
+        res.render("livros/add.ejs", { msg: req.flash("msg") });
+    } catch(error) {
+        res.send("Erro lController abreAdd: " + error + ". Tente novamente mais tarde...");
+    }
 }
 
 async function add(req, res){
@@ -23,20 +28,34 @@ async function add(req, res){
             res.redirect("/admin/livros");
         });
     } catch(error) {
-        res.send("Erro lController " + error + ". Tente novamente mais tarde...");
+        res.send("Erro lController add: " + error + ". Tente novamente mais tarde...");
     }
 }
 
 async function list(req, res){
     try {
         const livros = await Livro.findAll();
-        res.render("livros/list.ejs", { msg: req.flash("msg"), "Livros" : livros });
+        res.render("livros/list.ejs", { "Livros" : livros, msg: req.flash("msg") });
     } catch(error) {
-        res.send("Erro lController " + error + ". Tente novamente mais tarde...");
+        res.send("Erro lController list: " + error + ". Tente novamente mais tarde...");
     }
 }
 
-async function listFiltro(req, res){}
+async function listFiltro(req, res){
+    try {
+        const usuarios = await Livro.findAll({
+            where: {
+                nome: {
+                    [Op.iLike]: "%" + req.body.pesquisar + "%",
+                },
+            },
+        });
+
+        res.render("livros/list.ejs", { "Livros": livros, msg: req.flash("msg") });
+    } catch(error) {
+        res.send("Erro lController listFiltro: " + error + ". Tente novamente mais tarde...");
+    }
+}
 
 async function abreEdit(req, res){}
 

@@ -4,10 +4,10 @@
 * 25/10/2021
 */
 
-const Usuario = require("../model/Usuario");
-
 var passport = require("passport"),
-    LocalStrategy = require("passport-local").Strategy;
+LocalStrategy = require("passport-local").Strategy;
+
+const Usuario = require("../model/Usuario");
 
 passport.serializeUser(function(user, done){
     done(null, user.id);
@@ -41,7 +41,7 @@ passport.use(
                     return done(null, false, req.flash("loginMessage", "Senha incorreta!"));
                 }
 
-                return done(null, user, req.flash("loginSuccess", "Bem-vindo " + username + "!"));
+                return done(null, user, req.flash("loginSuccess", "Bem-vindo, " + username + "!"));
             });
         }
     )

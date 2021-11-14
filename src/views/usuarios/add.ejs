@@ -9,6 +9,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <meta name="theme-color" content="#ffffff">
     <title>Painel Administrativo</title>
     <style>
         body {
@@ -17,8 +20,12 @@
             text-align: justify;
         }
 
+        a:hover, span:hover {
+            color: blue;
+        }
+
         form {
-            width: 700px;
+            width: 600px;
             padding: 1.1em;
             border: 1px solid #CCC;
             border-radius: 1em;
@@ -46,6 +53,7 @@
             margin-top: 3px;
             width: calc(100% - 105px);
             font-size: 14px;
+            display: inline-block;
         }
 
         input:focus {
@@ -70,17 +78,15 @@
 </head>
 <body>
     <nav>
-        <span><a href="/admin">Voltar para a página inicial</a></span>
+        <span><a href="/admin">Voltar à página inicial</a></span>
     </nav>
     <header>
         <h1>Adicionar Usuários</h1>
-        <br>
-        <br>        
     </header>
     <article>
         <form method="post" enctype="multipart/form-data">
-            <h3>Adicionar Usuários</h3>
-            <h3>Nos campos onde há '*', o preenchimento é obrigatório!</h5>
+            <h3>Novo Usuário</h3>
+            <h3>Nos campos onde há '<span class="obrigatorio">*</span>', o preenchimento é obrigatório!</h5>
             <ul>
                 <li>
                     <span class="obrigatorio">*</span><label>Nome:&ensp;</label><input type="text" name="nome" placeholder="Digite seu nome" />

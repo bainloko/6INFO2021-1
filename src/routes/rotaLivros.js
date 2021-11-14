@@ -9,16 +9,19 @@ const roteador = express.Router(); //inicializa as rotas do express
 const livroController = require("../controller/livroController");
 const upload = require("../config/multerLivros");
 
+//CREATE
 //ABRE ADD
 roteador.get("/add", livroController.abreAdd);
 //ADD
 roteador.post("/add", upload.single("fotoCapa"), livroController.add);
 
+//READ
 //LIST
 roteador.get("/", livroController.list);
 //LIST FILTRO
 roteador.post("/", livroController.listFiltro);
 
+//UPDATE
 //ABRE EDIT
 roteador.get("/edit", livroController.abreEdit);
 //EDIT

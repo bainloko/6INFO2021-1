@@ -9,16 +9,19 @@ const roteador = express.Router(); //inicializa as rotas do express
 const usuarioController = require("../controller/usuarioController");
 const upload = require("../config/multerUsuarios");
 
+//CREATE
 //ABRE ADD
 roteador.get("/add", usuarioController.abreAdd);
 //ADD
 roteador.post("/add", upload.single("foto"), usuarioController.add);
 
+//READ
 //LIST
 roteador.get("/", usuarioController.list);
 //LIST FILTRO
 roteador.post("/", usuarioController.listFiltro);
 
+//UPDATE
 //ABRE EDIT
 roteador.get("/edit", usuarioController.abreEdit);
 //EDIT

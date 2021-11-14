@@ -9,6 +9,7 @@ exports.autenticacao = function(){
         if (req.isAuthenticated()){
             return next(); //NEXT MIDDLEWARE FUNCTION!!!!!!!! outra coisa que demorei um tempo pra entender...
         } else {
+            req.flash("msg", "loginMessage");
             res.redirect("/admin");
         }
     }

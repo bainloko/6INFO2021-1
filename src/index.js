@@ -8,7 +8,7 @@
 const express = require("express");
 const path = require("path");
 const session = require("express-session");
-const flash = require("connect-flash"); //qual a diferença entre o connect-flash e o req-flash?
+const flash = require("req-flash");
 const porta = 3000;
 
 //autenticação

@@ -5,9 +5,14 @@
 */
 
 const Usuario = require("../model/Usuario");
+const { Op } = require("sequelize");
 
 async function abreAdd(req, res){
-    res.render("usuarios/add.ejs", {});
+    try {
+        res.render("usuarios/add.ejs", { msg: req.flash("msg") });
+    } catch(error) {
+        res.send("Erro uController abreAdd: " + error + ". Tente novamente mais tarde...");
+    }
 }
 
 async function add(req, res){
@@ -23,20 +28,34 @@ async function add(req, res){
             res.redirect("/admin/usuarios");
         });
     } catch(error) {
-        res.send("Erro uController " + error + ". Tente novamente mais tarde...");
+        res.send("Erro uController add: " + error + ". Tente novamente mais tarde...");
     }
 }
 
 async function list(req, res){
     try {
         const usuarios = await Usuario.findAll();
-        res.render("usuarios/list.ejs", { msg: req.flash("msg"), "Usuarios" : usuarios });
+        res.render("usuarios/list.ejs", { "Usuarios" : usuarios, msg: req.flash("msg") });
     } catch(error) {
-        res.send("Erro uController " + error + ". Tente novamente mais tarde...");
+        res.send("Erro uController list: " + error + ". Tente novamente mais tarde...");
     }
 }
 
-async function listFiltro(req, res){}
+async function listFiltro(req, res){
+    try {
+        const usuarios = await Usuario.findAll({
+            where: {
+                nome: {
+                    [Op.iLike]: "%" + req.body.pesquisar + "%",
+                },
+            },
+        });
+
+        res.render("usuarios/list.ejs", { "Usuarios": usuarios, msg: req.flash("msg") });
+    } catch(error) {
+        res.send("Erro uController listFiltro: " + error + ". Tente novamente mais tarde...");
+    }
+}
 
 async function abreEdit(req, res){}
 
@@ -52,7 +71,7 @@ async function del(req, res){
         });
         res.redirect("/admin/usuarios");
     } catch(error) {
-        res.send("Erro uController " + error + ". Tente novamente mais tarde...");
+        res.send("Erro uController del: " + error + ". Tente novamente mais tarde...");
     }
 }
 
