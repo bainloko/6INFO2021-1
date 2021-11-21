@@ -12,6 +12,7 @@ async function abreAdd(req, res){
         res.render("livros/add.ejs", { msg: req.flash("msg") });
     } catch(error) {
         res.send("Erro lController abreAdd: " + error + ". Tente novamente mais tarde...");
+        console.log("Erro lController abreAdd: " + error + ". Tente novamente mais tarde...");
     }
 }
 
@@ -29,6 +30,7 @@ async function add(req, res){
         });
     } catch(error) {
         res.send("Erro lController add: " + error + ". Tente novamente mais tarde...");
+        console.log("Erro lController add: " + error + ". Tente novamente mais tarde...");
     }
 }
 
@@ -38,6 +40,7 @@ async function list(req, res){
         res.render("livros/list.ejs", { "Livros" : livros, msg: req.flash("msg") });
     } catch(error) {
         res.send("Erro lController list: " + error + ". Tente novamente mais tarde...");
+        console.log("Erro lController list: " + error + ". Tente novamente mais tarde...");
     }
 }
 
@@ -54,6 +57,7 @@ async function listFiltro(req, res){
         res.render("livros/list.ejs", { "Livros": livros, msg: req.flash("msg") });
     } catch(error) {
         res.send("Erro lController listFiltro: " + error + ". Tente novamente mais tarde...");
+        console.log("Erro lController listFiltro: " + error + ". Tente novamente mais tarde...");
     }
 }
 
@@ -71,7 +75,8 @@ async function del(req, res){
         });
         res.redirect("/admin/livros");
     } catch(error) {
-        res.send("Erro lController " + error + ". Tente novamente mais tarde...");
+        res.send("Erro lController del: " + error + ". Tente novamente mais tarde...");
+        console.log("Erro lController del " + error + ". Tente novamente mais tarde...");
     }
 }
 

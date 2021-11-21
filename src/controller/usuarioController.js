@@ -12,6 +12,7 @@ async function abreAdd(req, res){
         res.render("usuarios/add.ejs", { msg: req.flash("msg") });
     } catch(error) {
         res.send("Erro uController abreAdd: " + error + ". Tente novamente mais tarde...");
+        console.log("Erro uController abreAdd: " + error + ". Tente novamente mais tarde...");
     }
 }
 
@@ -29,6 +30,7 @@ async function add(req, res){
         });
     } catch(error) {
         res.send("Erro uController add: " + error + ". Tente novamente mais tarde...");
+        console.log("Erro uController add: " + error + ". Tente novamente mais tarde...");
     }
 }
 
@@ -38,6 +40,7 @@ async function list(req, res){
         res.render("usuarios/list.ejs", { "Usuarios" : usuarios, msg: req.flash("msg") });
     } catch(error) {
         res.send("Erro uController list: " + error + ". Tente novamente mais tarde...");
+        console.log("Erro uController list: " + error + ". Tente novamente mais tarde...");
     }
 }
 
@@ -54,6 +57,7 @@ async function listFiltro(req, res){
         res.render("usuarios/list.ejs", { "Usuarios": usuarios, msg: req.flash("msg") });
     } catch(error) {
         res.send("Erro uController listFiltro: " + error + ". Tente novamente mais tarde...");
+        console.log("Erro uController listFiltro: " + error + ". Tente novamente mais tarde...");
     }
 }
 
@@ -72,6 +76,7 @@ async function del(req, res){
         res.redirect("/admin/usuarios");
     } catch(error) {
         res.send("Erro uController del: " + error + ". Tente novamente mais tarde...");
+        console.log("Erro uController del: " + error + ". Tente novamente mais tarde...");
     }
 }
 
