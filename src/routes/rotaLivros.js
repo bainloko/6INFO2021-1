@@ -23,9 +23,9 @@ roteador.post("/", livroController.listFiltro);
 
 //UPDATE
 //ABRE EDIT
-roteador.get("/edit", livroController.abreEdit);
+roteador.get("/edit/:id", livroController.abreEdit);
 //EDIT
-roteador.post("/edit", livroController.edit);
+roteador.post("/edit/:id", upload.single("fotoCapa"), livroController.edit);
 
 //DELETE
 roteador.get("/del/:id", livroController.del);

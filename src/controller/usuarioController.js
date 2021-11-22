@@ -37,7 +37,7 @@ async function add(req, res){
 async function list(req, res){
     try {
         const usuarios = await Usuario.findAll();
-        res.render("usuarios/list.ejs", { "Usuarios" : usuarios, msg: req.flash("msg") });
+        res.render("usuarios/list.ejs", { "Usuarios": usuarios, msg: req.flash("msg") });
     } catch(error) {
         res.send("Erro uController list: " + error + ". Tente novamente mais tarde...");
         console.log("Erro uController list: " + error + ". Tente novamente mais tarde...");
@@ -61,9 +61,36 @@ async function listFiltro(req, res){
     }
 }
 
-async function abreEdit(req, res){}
+async function abreEdit(req, res){
+    try {
+        const usuario = await Usuario.findByPk(req.params.id);
+        res.render("usuarios/edit.ejs", { "Usuario": usuario, msg: req.flash("msg") });
+    } catch(error) {
+        res.send("Erro uController abreEdit: " + error + ". Tente novamente mais tarde...");
+        console.log("Erro uController abreEdit: " + error + ". Tente novamente mais tarde...");
+    }
+}
 
-async function edit(req, res){}
+async function edit(req, res){
+    try {
+        const usuario = await Usuario.findByPk(req.params.id);
+        usuario.nome = req.body.nome;
+        usuario.email = req.body.email;
+        usuario.senha = req.body.senha;
+
+        if (req.file != undefined){
+            usuario.foto = req.file.filename;
+        }
+
+        usuario.save().then((usuario) => {
+            req.flash("msg", "O Usuário " + usuario.nome + " foi editado com sucesso!");
+            res.redirect("/admin/usuarios");
+        });
+    } catch(error) {
+        res.send("Erro uController edit: " + error + ". Tente novamente mais tarde...");
+        console.log("Erro uController edit: " + error + ". Tente novamente mais tarde...");
+    }
+}
 
 async function del(req, res){
     try {

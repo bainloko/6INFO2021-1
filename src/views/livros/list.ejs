@@ -9,8 +9,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
     <meta name="theme-color" content="#ffffff">
     <title>Painel Administrativo</title>
     <style>
@@ -32,7 +32,7 @@
             border-radius: 4px;
             font-size: 16px;
             background-color: white;
-            background-image: url("/searchicon.png");
+            background-image: url("/misc/search.png");
             background-position: 10px 10px;
             background-repeat: no-repeat;
             margin-bottom: 5px;
@@ -58,23 +58,6 @@
             text-align: center;
         }
 
-        #foto {
-            width: 150px;
-            height: 220px;
-        }
-
-        img {
-            width: 100px;
-        }
-
-        img:hover {
-            cursor: pointer;
-            display: flex;
-            margin-top: 5px;
-            width: 150px;
-            height: auto;
-        }
-
         #linha {
             border: none;
             display: flex;
@@ -97,7 +80,7 @@
 </head>
 <body>
     <nav>
-        <span><a href="/admin/livros/add">Para adicionar outro livro...</a></span><span><a href="/admin">Voltar para a página inicial</a></span>  
+        <span><a href="/admin/livros/add">Para adicionar outro livro...</a></span><span><a href="/admin">Voltar para a página inicial</a></span>   
     </nav>
     <header>
         <h3>Listagem dos Livros Cadastrados</h3>
@@ -132,7 +115,7 @@
                 <td><%=livro.editora%></td>
                 <td><%=livro.dataPubli%></td>
                 <td id="foto">
-                    <img src="/upload/livros/<%=livro.fotoCapa%>" alt="foto de algum livro" />
+                    <img src="/uploads/livros/<%=livro.fotoCapa%>" alt="foto de algum livro" width="130px" />
                 </td>
                 <td id="linha">
                     <label>|</label>
@@ -147,7 +130,12 @@
                     <label>|</label>
                 </td>
                 <td>
-                    <a id="acoes" href="/admin/livros/del/<%=livro.id%>">Deletar Livro</a>
+                    <a id="acoes" href="/admin/livros/edit/<%=livro.id%>">
+                        <img src="/misc/edit.png" alt="Editar Livro" width="50px" />
+                    </a>
+                    <a id="acoes" href="/admin/livros/del/<%=usuario.id%>">
+                        <img src="/misc/del.png" alt="Deletar Livro" width="50px" />
+                    </a>
                 </td>
             </tr>
             <% }); %>
@@ -155,7 +143,7 @@
         <br>
         <hr>
         <h3 id="mensagem">
-            <% if ( msg ) { %>
+            <% if (msg){ %>
             <%= msg %>
             <% } else { %>
             <%= "" %>
@@ -164,7 +152,7 @@
     </article>
     <footer>
         <br>
-        <h3>© Kauã Maia, 2021 - Contato <a href="https://github.com/bainloko">Github.com/bainloko</a></h3>
+        <h3>© Kauã Maia, 2021 - Contato <a href="https://github.com/bainloko">github.com/bainloko</a></h3>
     </footer>
 </body>
 </html>

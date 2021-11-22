@@ -8,7 +8,7 @@ const multer = require("multer");
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb){
-        let path = "./public/upload/livros";
+        let path = "./public/uploads/livros";
         cb(null, path);
     },
 

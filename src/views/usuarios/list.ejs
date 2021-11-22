@@ -9,8 +9,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
     <meta name="theme-color" content="#ffffff">
     <title>Painel Administrativo</title>
     <style>
@@ -32,7 +32,7 @@
             border-radius: 4px;
             font-size: 16px;
             background-color: white;
-            background-image: url("/searchicon.png");
+            background-image: url("/misc/search.png");
             background-position: 10px 10px;
             background-repeat: no-repeat;
             margin-bottom: 5px;
@@ -56,23 +56,6 @@
             border: 1px solid gray;
             padding: 10px 20px; 
             text-align: center;
-        }
-
-        #foto {
-            width: 180px;
-            height: 220px;
-        }
-
-        img {
-            width: 130px;
-        }
-
-        img:hover {
-            cursor: pointer;
-            display: flex;
-            margin-top: 5px;
-            width: 180px;
-            height: auto;
         }
 
         #linha {
@@ -124,7 +107,7 @@
                 <td><%=usuario.email%></td>
                 <td><%=usuario.senha%></td>
                 <td id="foto">
-                    <img src="/upload/usuarios/<%=usuario.foto%>" alt="foto de algum usuário" />
+                    <img src="/uploads/usuarios/<%=usuario.foto%>" alt="foto de algum usuário" width="140px" />
                 </td>
                 <td id="linha">
                     <label>|</label>
@@ -139,7 +122,12 @@
                     <label>|</label>
                 </td>
                 <td>
-                    <a id="acoes" href="/admin/usuarios/del/<%=usuario.id%>">Deletar Usuário</a>
+                    <a id="acoes" href="/admin/usuarios/edit/<%=usuario.id%>">
+                        <img src="/misc/edit.png" alt="Editar Usuário" width="50px" />
+                    </a>
+                    <a id="acoes" href="/admin/usuarios/del/<%=usuario.id%>">
+                        <img src="/misc/del.png" alt="Deletar Usuário" width="50px" />
+                    </a>
                 </td>
             </tr>
             <% }); %>
@@ -147,7 +135,7 @@
         <br>
         <hr>
         <h3 id="mensagem">
-            <% if ( msg ) { %>
+            <% if (msg){ %>
             <%= msg %>
             <% } else { %>
             <%= "" %>
@@ -156,7 +144,7 @@
     </article>
     <footer>
         <br>
-        <h3>© Kauã Maia, 2021 - Contato <a href="https://github.com/bainloko">Github.com/bainloko</a></h3>
+        <h3>© Kauã Maia, 2021 - Contato <a href="https://github.com/bainloko">github.com/bainloko</a></h3>
     </footer>
 </body>
 </html>

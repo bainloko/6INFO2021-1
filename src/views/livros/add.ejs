@@ -9,8 +9,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
     <meta name="theme-color" content="#ffffff">
     <title>Painel Administrativo</title>
     <style>
@@ -79,11 +79,20 @@
             color: red;
             font-weight: 1000;
         }
+
+        span {
+            padding: 5px;
+            display: inline-block;
+        }
+
+        #acoes {
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
     <nav>
-        <span><a href="/admin">Voltar à página inicial</a></span>
+        <span><a href="/admin/livros">Para ir à listagem dos livros...</a></span><span><a href="/admin">Voltar para a página inicial</a></span>
     </nav>
     <header>
         <h1>Adicionar Livros</h1>
@@ -123,7 +132,7 @@
     </article>
     <footer>
         <br>
-        <h3>© Kauã Maia, 2021 - Contato <a href="https://github.com/bainloko">Github.com/bainloko</a></h3>
+        <h3>© Kauã Maia, 2021 - Contato <a href="https://github.com/bainloko">github.com/bainloko</a></h3>
     </footer>
 </body>
 </html>

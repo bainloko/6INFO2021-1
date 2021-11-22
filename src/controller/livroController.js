@@ -46,7 +46,7 @@ async function list(req, res){
 
 async function listFiltro(req, res){
     try {
-        const usuarios = await Livro.findAll({
+        const livros = await Livro.findAll({
             where: {
                 nome: {
                     [Op.iLike]: "%" + req.body.pesquisar + "%",
@@ -61,9 +61,40 @@ async function listFiltro(req, res){
     }
 }
 
-async function abreEdit(req, res){}
+async function abreEdit(req, res){
+    try {
+        const livro = await Livro.findByPk(req.params.id);
+        res.render("livros/edit.ejs", { "Livro": livro, msg: req.flash("msg") });
+    } catch(error) {
+        res.send("Erro lController abreEdit: " + error + ". Tente novamente mais tarde...");
+        console.log("Erro lController abreEdit: " + error + ". Tente novamente mais tarde...");
+    }
+}
 
-async function edit(req, res){}
+async function edit(req, res){
+    try {
+        const livro = await Livro.findByPk(req.params.id);
+        livro.nome = req.body.nome;
+        livro.autor = req.body.autor;
+        livro.valor = req.body.valor;
+        livro.descricao = req.body.descricao;
+        livro.paginas = req.body.paginas;
+        livro.editora = req.body.editora;
+        livro.anoPubli = req.body.anoPubli;
+
+        if (req.file != undefined){
+            livro.fotoCapa = req.file.filename;
+        }
+
+        livro.save().then((livro) => {
+            req.flash("msg", "O livro " + livro.nome + " foi editado com sucesso!");
+            res.redirect("/admin/usuarios");
+        });
+    } catch(error) {
+        res.send("Erro lController edit: " + error + ". Tente novamente mais tarde...");
+        console.log("Erro lController edit: " + error + ". Tente novamente mais tarde...");
+    }
+}
 
 async function del(req, res){
     try {

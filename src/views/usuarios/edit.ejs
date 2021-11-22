@@ -4,7 +4,7 @@
     <!--
         * @bainloko
         * PROGRAMAÇÃO IV
-        * 04/10/2021
+        * 22/11/2021
     -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,8 +12,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
     <meta name="theme-color" content="#ffffff">
-    <title>Painel Administrativo</title>
-    <style>
+    <title>Painel Administrativo</title><style>
         body {
             margin: 2em;
             font-family: Arial, Helvetica, sans-serif;
@@ -87,31 +86,45 @@
 </head>
 <body>
     <nav>
-        <span><a href="/admin/usuarios">Para ir à listagem dos usuários...</a></span><span><a href="/admin">Voltar para a página inicial</a></span>
+        <span><a href="/admin/usuarios">Para ir à listagem dos usuários...</a></span><span><a href="/admin/usuarios/add">Para adicionar um usuário...</a></span><span><a href="/admin">Voltar para a página inicial</a></span> 
     </nav>
     <header>
-        <h1>Adicionar Usuários</h1>
+        <h1>Editar Usuário</h1>
     </header>
     <article>
         <form method="post" enctype="multipart/form-data">
-            <h3>Novo Usuário</h3>
+            <h3><%=usuario.nome%></h3>
             <h3>Nos campos onde há '<span class="obrigatorio">*</span>', o preenchimento é obrigatório!</h5>
             <ul>
                 <li>
-                    <span class="obrigatorio">*</span><label>Nome:&ensp;</label><input type="text" name="nome" placeholder="Digite seu nome" required />
+                    <label>ID:&ensp;</label><input type="text" name="id" readonly value="<%=usuario.id%>" />
                 </li>
                 <li>
-                    <span class="obrigatorio">*</span><label>E-mail:&ensp;</label><input type="email" name="email" placeholder="Digite seu e-mail" required />
+                    <span class="obrigatorio">*</span><label>Nome:&ensp;</label><input type="text" name="nome" value="<%=usuario.nome%>" required />
                 </li>
                 <li>
-                    <span class="obrigatorio">*</span><label>Senha:&ensp;</label><input type="password" name="senha" placeholder="Digite sua senha" required />
+                    <span class="obrigatorio">*</span><label>E-mail:&ensp;</label><input type="email" name="email" value="<%=usuario.email%>" required />
                 </li>
                 <li>
+                    <span class="obrigatorio">*</span><label>Senha:&ensp;</label><input type="password" name="senha" value="<%=usuario.senha%>" required />
+                </li>
+                <li>
+                    <img src="/uploads/usuarios/<%=usuario.foto%>" alt="foto de algum usuário" width="140px" />
+                    <br>
                     <span class="obrigatorio">*</span><label>Foto:&ensp;</label><input id="fotoInp" type="file" name="foto" required />
                     <input id="addInp" type="submit" value="Adicionar Usuário" />
                 </li>
             </ul>
         </form>
+        <br>
+        <hr>
+        <h3 id="mensagem">
+            <% if (msg){ %>
+            <%= msg %>
+            <% } else { %>
+            <%= "" %>
+            <% } %>
+        </h3>
     </article>
     <footer>
         <br>

@@ -10,12 +10,12 @@ const Usuario = require("../model/Usuario");
 const Livro = require("../model/Livro");
 const conexao = new Sequelize(dbConfig);
 
-async function conectar(){
+Usuario.init(conexao);
+Livro.init(conexao);
+
+function teste(){
     try {
-        Usuario.init(conexao);
-        Livro.init(conexao);
-        
-        await conexao.authenticate();
+        conexao.authenticate();
         console.log("A conexão ao Banco de Dados foi estabelecida com sucesso!");
         return 0;
     } catch(error) {
@@ -25,4 +25,4 @@ async function conectar(){
     }
 }
 
-module.exports = {conexao, conectar};
+module.exports = {conexao, teste};

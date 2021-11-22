@@ -5,24 +5,29 @@
 */
 
 const passport = require("../config/passport");
-const database = require("../database/indexDB");
-var logar, err = "Erro ao conectar ao Banco de Dados!";
+const logar = passport.authenticate("local", {
+    successRedirect: "/admin",
+    failureRedirect: "/admin",
+    failureFlash: true,
+});
 
 async function abreLogin(req, res){
-    res.render("auth.ejs", { msg: req.flash("loginMessage") });
-}
-
-if(database.conectar() == 0){
-    logar = passport.authenticate("local", {
-        successRedirect: "/admin",
-        failureRedirect: "/admin",
-        failureFlash: true,
-    });
-} else {
-    logar = (req, res) => {
-        req.flash("loginMessage", err);
-        res.redirect("/admin");
+    try {
+        res.render("auth.ejs", { msg: req.flash("loginMessage") });
+    } catch(error) {
+        res.send("Erro loginController abreLogin: " + error + ". Tente novamente mais tarde...");
+        console.log("Erro loginController abreLogin: " + error + ". Tente novamente mais tarde...");
     }
 }
 
-module.exports = {abreLogin, logar};
+async function sair(req, res){
+    try {
+        req.logout();
+        res.render("auth.ejs", { msg: req.flash("loginMessage", "Você foi deslogado com sucesso!") });       
+    } catch(error) {
+        res.send("Erro loginController sair: " + error + ". Tente novamente mais tarde...");
+        console.log("Erro loginController sair: " + error + ". Tente novamente mais tarde...");
+    }
+}
+
+module.exports = {abreLogin, logar, sair};
