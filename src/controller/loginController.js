@@ -13,7 +13,7 @@ const logar = passport.authenticate("local", {
 
 async function abreLogin(req, res){
     try {
-        res.render("auth.ejs", { msg: req.flash("loginMessage") });
+        res.render("auth.ejs", { msg: req.flash("loginMessage"), logado: req.user });
     } catch(error) {
         res.send("Erro loginController abreLogin: " + error + ". Tente novamente mais tarde...");
         console.log("Erro loginController abreLogin: " + error + ". Tente novamente mais tarde...");

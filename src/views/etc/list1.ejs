@@ -1,6 +1,5 @@
 <!doctype html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,7 +19,11 @@
     =========================================================
     * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
     -->
-<link href="/assets/main.css" rel="stylesheet"></head>
+    <link href="/assets/main.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
 <body>
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
@@ -53,7 +56,8 @@
                         </span>
                     </button>
                 </span>
-            </div>    <div class="app-header__content">
+            </div>
+            <div class="app-header__content">
                 <div class="app-header-left">
                     <div class="search-wrapper">
                         <div class="input-holder">
@@ -62,7 +66,7 @@
                         </div>
                         <button class="close"></button>
                     </div>
-                            </div>
+                </div>
                 <div class="app-header-right">
                     <div class="header-btn-lg pr-0">
                         <div class="widget-content p-0">
@@ -83,16 +87,16 @@
                                         Alina Mclourd
                                     </div>                                   
                                 </div>
-                                
                             </div>
                         </div>
-                    </div>        </div>
+                    </div>
+                </div>
             </div>
         </div>        
-               <div class="app-main">
-                <div class="app-sidebar sidebar-shadow">
-                    <div class="app-header__logo">
-                        <div class="logo-src"></div>
+        <div class="app-main">
+            <div class="app-sidebar sidebar-shadow">
+                <div class="app-header__logo">
+                    <div class="logo-src"></div>
                         <div class="header__pane ml-auto">
                             <div>
                                 <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
@@ -120,10 +124,10 @@
                                 </span>
                             </button>
                         </span>
-                    </div>    <div class="scrollbar-sidebar">
+                    </div>
+                    <div class="scrollbar-sidebar">
                         <div class="app-sidebar__inner">
                             <ul class="vertical-nav-menu">
-                                
                                 <li class="app-sidebar__heading">Sistema Administrativo</li>
                                 <li>
                                     <a href="#">
@@ -133,13 +137,13 @@
                                     </a>
                                     <ul>
                                         <li>
-                                            <a href="/admin/usuario/">
+                                            <a href="/admin/usuarios/">
                                                 <i class="metismenu-icon"></i>
                                                 Listar
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/admin/usuario/add">
+                                            <a href="/admin/usuarios/add">
                                                 <i class="metismenu-icon">
                                                 </i>Adicionar
                                             </a>
@@ -149,7 +153,8 @@
                             </ul>
                         </div>
                     </div>
-                </div>    <div class="app-main__outer">
+                </div>
+                <div class="app-main__outer">
                     <div class="app-main__inner">
                         <div class="app-page-title">
                             <div class="page-title-wrapper">
@@ -163,8 +168,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                   </div>
-                        </div>            <div class="row">
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-lg-12">
                                 <div class="main-card mb-3 card">
                                     <div class="card-body"><h5 class="card-title">Tabela Usuários</h5>
@@ -185,15 +191,15 @@
                                                 <th scope="row"><%=usuario.id%></th>
                                                 <td><%=usuario.nome%></td>
                                                 <td><%=usuario.email%></td>
-                                                <td><img src="/uploads/<%=usuario.foto%>" width="80px">        </td>
+                                                <td><img src="/uploads/usuarios/<%=usuario.foto%>" width="80px">        </td>
                                                 <td>
-                                                    <a href="/admin/usuario/edt/<%=usuario.id%>">
-                                                        <img src="/edit.png" width="50px">
+                                                    <a href="/admin/usuarios/edit/<%=usuario.id%>">
+                                                        <img src="/misc/edit.png" width="50px">
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <a href="/admin/usuario/del/<%=usuario.id%>">
-                                                        <img src="/lixeira.png" width="50px">
+                                                    <a href="/admin/usuarios/del/<%=usuario.id%>">
+                                                        <img src="/misc/del.png" width="50px">
                                                     </a>
                                                 </td>
                                             </tr>
@@ -213,15 +219,15 @@
                         <div class="app-footer">
                             <div class="app-footer__inner">
                                 <div class="app-footer-left">
-                                    
                                 </div>
                                 <div class="app-footer-right">
-                                    
                                 </div>
                             </div>
                         </div>
-                    </div>    </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-<script type="text/javascript" src="./assets/scripts/main.js"></script></body>
+    <script type="text/javascript" src="../../public/assets/scripts/main.js"></script></body>
 </html>

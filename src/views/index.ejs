@@ -9,8 +9,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
     <meta name="theme-color" content="#ffffff">
     <title>Página Inicial</title>
     <style>
@@ -21,8 +21,9 @@
         }
 
         span {
-            margin: 1em;
-            padding: 2px;
+            margin: 1px;
+            margin-right: 1em;
+            padding-right: 2px;
             font-size: 18px;
             display: inline-block;
         }
@@ -38,14 +39,16 @@
 </head>
 <body>
     <nav>
-        <span><a href="/admin/usuarios">Acesse o subsistema Usuários aqui</a></span><span><a href="/admin/livros">Acesse o subsistema Livros aqui</a></span>
+        <span><a href="/admin/usuarios">Acesse o subsistema Usuários aqui</a></span><span><a href="/admin/livros">Acesse o subsistema Livros aqui</a></span><span><a href="/sair">Sair</a></span>
+        <br>
+        <h5>Usuário logado: <%=logado.nome%></h5>
     </nav>
     <header>
         <h1>Página inicial "/admin"<h1>
     </header>
     <article>
         <p>para projetos futuros... usar o código deste projeto como base (crud básico, autenticação, error handlers, timeout, entre outras coisas, muito funcional)</p>
-        <p>E: 1. design template, 2. não deixar o usuário admin deletar a si mesmo (grupos com permissões), 3. **deletar as imagens dos usuários no banco na mesma hora em que são deletados**, 4. CRIPTOGRAFAR OS DADOS, PRINCIPALMENTE AS SENHAS, salt algorithms and what not!!!!!</p>
+        <p>e 1: achar um template design, 2: grupos com permissões</p>
         <hr>
         <h3 id="mensagem">
             <% if (msg){ %>

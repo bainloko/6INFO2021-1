@@ -78,10 +78,11 @@
         .obrigatorio {
             color: red;
             font-weight: 1000;
+            padding-right: 0;
         }
 
         span {
-            padding: 5px;
+            padding-right: 10px;
             display: inline-block;
         }
 
@@ -92,7 +93,9 @@
 </head>
 <body>
     <nav>
-        <span><a href="/admin/livros">Para ir à listagem dos livros...</a></span><span><a href="/admin">Voltar para a página inicial</a></span>
+        <span><a href="/admin/livros">Para ir à listagem dos livros...</a></span><span><a href="/admin">Voltar para a página inicial</a></span><span><a href="/sair">Sair</a></span>
+        <br>
+        <h5>Usuário logado: <%=logado.nome%></h5>
     </nav>
     <header>
         <h1>Adicionar Livros</h1>

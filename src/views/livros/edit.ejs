@@ -12,7 +12,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
     <meta name="theme-color" content="#ffffff">
-    <title>Painel Administrativo</title><style>
+    <title>Painel Administrativo</title>
+    <style>
         body {
             margin: 2em;
             font-family: Arial, Helvetica, sans-serif;
@@ -24,7 +25,7 @@
         }
 
         form {
-            width: 600px;
+            width: 750px;
             padding: 1.1em;
             border: 1px solid #CCC;
             border-radius: 1em;
@@ -33,24 +34,30 @@
         h3 {
             margin-top: -1px;
         }
-
-        ul {
-            list-style: none;
-            padding: 0;
+        
+        table {
             margin: 0;
+            padding: 0;
+        }
+
+        img {
+            display: inline-block;
+            margin-top: -45%;
+            margin-left: -10%;
         }
 
         label {
-            width: 90px;
+            margin-right: 30%;
             display: inline-block;
-            text-align: right;
+            text-align: justify;
             font-size: 21px;
         }
 
         input {
             border: 1px solid #999;
             margin-top: 3px;
-            width: calc(100% - 243px);
+            margin-left: -160%;
+            width: 235%;
             font-size: 14px;
             display: inline-block;
         }
@@ -60,22 +67,24 @@
         }
 
         #fotoInp {
-            width: calc(100% - 240px);
+            margin-left: -60%;
+            width: 137%;
         }
 
         #addInp {
             width: 100%;
-            margin: 1 auto;
+            margin: 0 auto;
             display: flex;
         }
 
         .obrigatorio {
             color: red;
             font-weight: 1000;
+            padding-right: 0;
         }
 
         span {
-            padding: 5px;
+            padding-right: 5px;
             display: inline-block;
         }
 
@@ -86,7 +95,9 @@
 </head>
 <body>
     <nav>
-        <span><a href="/admin/livros">Para ir à listagem dos livros...</a></span><span><a href="/admin/livros/add">Para adicionar um livro...</a></span><span><a href="/admin">Voltar para a página inicial</a></span> 
+        <span><a href="/admin/livros">Para ir à listagem dos livros...</a></span><span><a href="/admin/livros/add">Para adicionar um livro...</a></span><span><a href="/admin">Voltar para a página inicial</a></span><span><a href="/sair">Sair</a></span>
+        <br>
+        <h5>Usuário logado: <%=logado.nome%></h5> 
     </nav>
     <header>
         <h1>Editar Livro</h1>
@@ -95,38 +106,88 @@
         <form method="post" enctype="multipart/form-data">
             <h3><%=livro.nome%></h3>
             <h3>Nos campos onde há '<span class="obrigatorio">*</span>', o preenchimento é obrigatório!</h5>
-            <ul>
-                <li>
-                    <label>ID:&ensp;</label><input type="text" name="nome" readonly value="<%=livro.id%>" />
-                </li>
-                <li>
-                    <span class="obrigatorio">*</span><label>Livro:&ensp;</label><input type="text" name="nome" value="<%=livro.nome%>" required />
-                </li>
-                <li>
-                    <span class="obrigatorio">*</span><label>Autor:&ensp;</label><input type="text" name="autor" value="<%=livro.autor%>" required />
-                </li>
-                <li>
-                    <span class="obrigatorio">*</span><label>Valor:&ensp;</label><input type="number" step="0.01" name="valor" value="<%=livro.valor%>" required />
-                </li>
-                <li>
-                    &ensp;<label>Descrição:&ensp;</label><textarea name="descricao" rows="1" maxlength="1000" value="<%=livro.descricao%>"></textarea>
-                </li>
-                <li>
-                    <span class="obrigatorio">*</span><label>Número de Páginas:&ensp;</label><input type="number" name="paginas" value="<%=livro.paginas%>" required />
-                </li>
-                <li>
-                    &ensp;<label>Editora:&ensp;</label><input type="text" name="editora" value="<%=livro.editora%>" />
-                </li>
-                <li>
-                    &ensp;<label>Ano da publicação:&ensp;</label><input type="text" name="anoPubli" value="<%=livro.anoPubli%>" />
-                </li>
-                <li>
-                    <img src="/uploads/livros/<%=livro.fotoCapa%>" alt="foto de algum livro" width="130px" />
-                    <br>
-                    <span class="obrigatorio">*</span><label>Foto:&ensp;</label><input id="fotoInp" type="file" name="fotoCapa" />
-                    <input id="addInp" type="submit" value="Adicionar Livro" />
-                </li>
-            </ul>
+            <table>
+                <tr>
+                    <td>
+                        <label>ID:&ensp;</label>
+                    </td>
+                    <td>
+                        <input type="text" name="id" readonly value="<%=usuario.id%>" />
+                    </td>
+                    <td rowspan="6">
+                        <img src="/uploads/livros/<%=livro.foto%>" alt="foto de algum livro" width="140px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="obrigatorio">*</span><label>Nome:&ensp;</label>
+                    </td>
+                    <td>
+                        <input type="text" name="nome" value="<%=livro.nome%>" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="obrigatorio">*</span><label>Autor:&ensp;</label>
+                    </td>
+                    <td>
+                        <input type="text" name="autor" value="<%=livro.autor%>" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="obrigatorio">*</span><label>Valor:&ensp;</label>
+                    </td>
+                    <td>
+                        <input type="number" step="0.01" name="valor" value="<%=livro.valor%>" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Descrição:&ensp;</label>
+                    </td>
+                    <td>
+                        <textarea name="descricao" rows="1" maxlength="1000" value="<%=livro.descricao%>"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="obrigatorio">*</span><label>Número de Páginas:&ensp;</label>
+                    </td>
+                    <td>
+                        <input type="number" name="paginas" value="<%=livro.paginas%>" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Editora:&ensp;</label>
+                    </td>
+                    <td>
+                        <input type="text" name="editora" value="<%=livro.editora%>" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Ano da publicação:&ensp;</label>
+                    </td>
+                    <td>
+                        <input type="text" name="anoPubli" value="<%=livro.anoPubli%>" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Caso queira mudar a foto deste livro, clique aqui:&ensp;</label>
+                    </td>
+                    <td>
+                        <input id="fotoInp" type="file" name="fotoCapa" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <input id="addInp" type="submit" value="Editar Livro" />
+                    </td>
+                </tr>
+            </table>
         </form>
         <br>
         <hr>

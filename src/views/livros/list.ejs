@@ -69,7 +69,7 @@
         }
 
         span {
-            padding: 5px;
+            padding-right: 10px;
             display: inline-block;
         }
 
@@ -80,7 +80,9 @@
 </head>
 <body>
     <nav>
-        <span><a href="/admin/livros/add">Para adicionar outro livro...</a></span><span><a href="/admin">Voltar para a página inicial</a></span>   
+        <span><a href="/admin/livros/add">Para adicionar outro livro...</a></span><span><a href="/admin">Voltar para a página inicial</a></span><span><a href="/sair">Sair</a></span>
+        <br>
+        <h5>Usuário logado: <%=logado.nome%></h5>
     </nav>
     <header>
         <h3>Listagem dos Livros Cadastrados</h3>
@@ -133,7 +135,7 @@
                     <a id="acoes" href="/admin/livros/edit/<%=livro.id%>">
                         <img src="/misc/edit.png" alt="Editar Livro" width="50px" />
                     </a>
-                    <a id="acoes" href="/admin/livros/del/<%=usuario.id%>">
+                    <a id="acoes" href="/admin/livros/del/<%=livro.id%>">
                         <img src="/misc/del.png" alt="Deletar Livro" width="50px" />
                     </a>
                 </td>

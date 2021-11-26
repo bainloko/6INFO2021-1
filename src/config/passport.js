@@ -8,6 +8,7 @@ var passport = require("passport"),
 LocalStrategy = require("passport-local").Strategy;
 
 const Usuario = require("../model/Usuario");
+const bcrypt = require("bcrypt");
 
 passport.serializeUser(function(user, done){
     done(null, user.id);
@@ -37,7 +38,7 @@ passport.use(
                     return done(null, false, req.flash("loginMessage", "Usuário não existe!"));
                 }
 
-                if (user.senha != password){
+                if (!bcrypt.compareSync(password, user.senha)){
                     return done(null, false, req.flash("loginMessage", "Senha incorreta!"));
                 }
 
