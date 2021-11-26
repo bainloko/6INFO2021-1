@@ -18,7 +18,7 @@ exports.autenticacao = function(){
 exports.index = function(){
     return function(req, res){
         if (req.isAuthenticated()){
-            res.render("index.ejs", { msg: req.flash("loginSuccess") });
+            res.render("index.ejs", { msg: req.flash("loginSuccess"), logado: req.user });
         } else {
             res.render("auth.ejs", { msg: req.flash("loginMessage") });
         }

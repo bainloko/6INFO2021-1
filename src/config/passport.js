@@ -42,7 +42,7 @@ passport.use(
                     return done(null, false, req.flash("loginMessage", "Senha incorreta!"));
                 }
 
-                return done(null, user, req.flash("loginSuccess", "Bem-vindo, " + username + "!"));
+                return done(null, user, req.flash("loginSuccess", "Bem-vindo, " + user.nome + "!"));
             });
         }
     )

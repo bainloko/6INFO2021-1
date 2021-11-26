@@ -46,7 +46,7 @@
 
         img {
             display: inline-block;
-            margin-top: -45%;
+            margin-top: -25%;
             margin-left: -10%;
         }
 
@@ -70,9 +70,9 @@
             border-color: #000;
         }
 
-        #fotoInp {
-            margin-left: -60%;
-            width: 137%;
+        #fotoInp, #senhaInp {
+            margin-left: -70%;
+            width: 145%;
         }
 
         #addInp {
@@ -99,9 +99,9 @@
 </head>
 <body>
     <nav>
-        <span><a href="/admin/usuarios">Para ir à listagem dos usuários...</a></span><span><a href="/admin/usuarios/add">Para adicionar um usuário...</a></span><span><a href="/admin">Voltar para a página inicial</a></span><span><a href="/sair">Sair</a></span>
+        <span><a href="/admin/usuarios">Para ir à listagem dos usuários...</a></span><span><a href="/admin/usuarios/add">Para adicionar um usuário...</a></span><span><a href="/admin">Voltar para a página inicial</a></span><span><a href="/admin/sair">Sair</a></span>
         <br>
-        <h5>Usuário logado: <%=logado.nome%></h5> 
+        <h4>Usuário logado: <%=logado.nome%>, <%=logado.email%></h4> 
     </nav>
     <header>
         <h1>Editar Usuário</h1>
@@ -113,29 +113,29 @@
             <table>
                 <tr>
                     <td>
-                        <label>ID:&ensp;</label>
+                        <label><span class="obrigatorio">*</span>&ensp;ID:</label>
                     </td>
                     <td>
                         <input type="text" name="id" readonly value="<%=usuario.id%>" />
                     </td>
-                    <td rowspan="6">
+                    <td rowspan="8">
                         <img src="/uploads/usuarios/<%=usuario.foto%>" alt="foto de algum usuário" width="140px" />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label>Nome:&ensp;</label>
+                        <label><span class="obrigatorio">*</span>&ensp;Nome:</label>
                     </td>
                     <td>
-                        <input type="text" name="nome" value="<%=usuario.nome%>" />
+                        <input type="text" name="nome" value="<%=usuario.nome%>" required />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label>E-mail:&ensp;</label>
+                        <label><span class="obrigatorio">*</span>&ensp;E-mail:</label>
                     </td>
                     <td>
-                        <input type="email" name="email" value="<%=usuario.email%>" />
+                        <input type="email" name="email" value="<%=usuario.email%>" required />
                     </td>
                 </tr>
                 <tr>
@@ -143,7 +143,7 @@
                         <label>Caso queira mudar a senha deste usuário, digite a nova senha aqui:&ensp;</label>
                     </td>
                     <td>
-                        <input type="password" name="senha" />
+                        <input id="senhaInp" type="password" name="senha" />
                     </td>
                 </tr>
                 <tr>

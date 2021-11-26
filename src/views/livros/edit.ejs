@@ -42,7 +42,7 @@
 
         img {
             display: inline-block;
-            margin-top: -45%;
+            margin-top: -25%;
             margin-left: -10%;
         }
 
@@ -95,9 +95,9 @@
 </head>
 <body>
     <nav>
-        <span><a href="/admin/livros">Para ir à listagem dos livros...</a></span><span><a href="/admin/livros/add">Para adicionar um livro...</a></span><span><a href="/admin">Voltar para a página inicial</a></span><span><a href="/sair">Sair</a></span>
+        <span><a href="/admin/livros">Para ir à listagem dos livros...</a></span><span><a href="/admin/livros/add">Para adicionar um livro...</a></span><span><a href="/admin">Voltar para a página inicial</a></span><span><a href="/admin/sair">Sair</a></span>
         <br>
-        <h5>Usuário logado: <%=logado.nome%></h5> 
+        <h4>Usuário logado: <%=logado.nome%>, <%=logado.email%></h4> 
     </nav>
     <header>
         <h1>Editar Livro</h1>
@@ -109,18 +109,18 @@
             <table>
                 <tr>
                     <td>
-                        <label>ID:&ensp;</label>
+                        <label><span class="obrigatorio">*</span>&ensp;ID:</label>
                     </td>
                     <td>
                         <input type="text" name="id" readonly value="<%=usuario.id%>" />
                     </td>
-                    <td rowspan="6">
+                    <td rowspan="10">
                         <img src="/uploads/livros/<%=livro.foto%>" alt="foto de algum livro" width="140px" />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <span class="obrigatorio">*</span><label>Nome:&ensp;</label>
+                        <label><span class="obrigatorio">*</span>&ensp;Nome:</label>
                     </td>
                     <td>
                         <input type="text" name="nome" value="<%=livro.nome%>" required />
@@ -128,7 +128,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <span class="obrigatorio">*</span><label>Autor:&ensp;</label>
+                        <label><span class="obrigatorio">*</span>&ensp;Autor:</label>
                     </td>
                     <td>
                         <input type="text" name="autor" value="<%=livro.autor%>" required />
@@ -136,7 +136,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <span class="obrigatorio">*</span><label>Valor:&ensp;</label>
+                        <label><span class="obrigatorio">*</span>&ensp;Valor:</label>
                     </td>
                     <td>
                         <input type="number" step="0.01" name="valor" value="<%=livro.valor%>" required />
@@ -152,7 +152,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <span class="obrigatorio">*</span><label>Número de Páginas:&ensp;</label>
+                        <label><span class="obrigatorio">*</span>&ensp;Número de Páginas:</label>
                     </td>
                     <td>
                         <input type="number" name="paginas" value="<%=livro.paginas%>" required />

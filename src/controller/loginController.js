@@ -23,7 +23,8 @@ async function abreLogin(req, res){
 async function sair(req, res){
     try {
         req.logout();
-        res.render("auth.ejs", { msg: req.flash("loginMessage", "Você foi deslogado com sucesso!") });       
+        req.flash("loginMessage", "Você foi deslogado com sucesso!");
+        res.redirect("/admin");
     } catch(error) {
         res.send("Erro loginController sair: " + error + ". Tente novamente mais tarde...");
         console.log("Erro loginController sair: " + error + ". Tente novamente mais tarde...");
