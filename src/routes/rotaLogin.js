@@ -11,10 +11,13 @@ const loginController = require("../controller/loginController");
 const aut = require("../config/autenticacao");
 
 //ABRE LOGIN
-roteador.get("/", aut.index(), loginController.abreLogin);
+roteador.get("/login", loginController.abreLogin);
+
+//INDEX
+roteador.get("/", aut.autenticacao(), loginController.index);
 
 //LOGAR
-roteador.post("/", (req, res, next) => {
+roteador.post("/login", (req, res, next) => {
     if (database.teste() === 0){
         return next();
     } else {

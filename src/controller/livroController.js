@@ -6,6 +6,8 @@
 
 const Livro = require("../model/Livro");
 const { Op } = require("sequelize");
+const { unlink } = require("fs/promises");
+const path = require("path");
 
 async function abreAdd(req, res){
     try {

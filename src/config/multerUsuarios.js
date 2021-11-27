@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
     },
 
     filename: function(req, file, cb){
-        let nomeArquivo = Date.now() + "-" + file.originalname;
+        let nomeArquivo = Date.now() + "-" + Math.round(Math.random() * 1e9) + "-" + file.originalname;
         cb(null, nomeArquivo);
     },
 });

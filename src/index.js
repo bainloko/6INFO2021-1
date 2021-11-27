@@ -4,11 +4,12 @@
 * 13/09/2021
 */
 
-//imports das bibliotecas iniciais, sessão, middleware para mensagens e a declaração da porta a ser usada
+//imports das bibliotecas iniciais, sessão, secret, middleware para mensagens e a declaração da porta a ser usada
 const express = require("express");
 const path = require("path");
 const timeout = require("connect-timeout");
 const session = require("express-session");
+const env = require("./env");
 const flash = require("req-flash");
 const porta = 3000;
 
@@ -36,10 +37,10 @@ function haltOnTimedout(req, res, next){
 
 app.use(
     session({     
-        secret: "secret",
-        saveUninitialized: true,
+        secret: env.SESSION_SECRET,
         resave: true,
-        cookie: { maxAge: 1800000 },
+        saveUninitialized: true,
+        cookie: { sameSite: "Lax", maxAge: 1800000, },
     })
 );
 
@@ -88,9 +89,9 @@ app.use(function(err, req, res, next) {
         res.status(err.status || 404).send(err.message);
         err.message = "404 Not Found. Página não encontrada!";
     } else {
-        err.message = "<h2>500 Internal Server Error. Erro interno do servidor, páginas inacessíveis, etc.<br>Te redirecionando para a página inicial em 10 segundos... Caso nada acontecer, clique <a href='/admin'>aqui</a>.</h2><script>window.setTimeout(() => {window.location = '/admin'}, 10000);</script>";
+        err.message = "<h2>500 Internal Server Error. Erro interno do servidor, páginas inacessíveis, etc.:<br>" + err + "<br>Te redirecionando para a página inicial em 10 segundos... Caso nada acontecer, clique <a href='/admin'>aqui</a>.</h2><script>window.setTimeout(() => {window.location = '/admin'}, 10000);</script>";
         res.status(err.status || 500).send(err.message);
-        err.message = "500 Internal Server Error. Erro interno do servidor, páginas inacessíveis, etc.";
+        err.message = "500 Internal Server Error. Erro interno do servidor, páginas inacessíveis, etc.:\n" + err;
     }
 
     console.log(err.message);

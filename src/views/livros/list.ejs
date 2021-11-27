@@ -54,8 +54,12 @@
 
         td, th {
             border: 1px solid gray;
-            padding: 10px 20px; 
+            padding: 10px;
             text-align: center;
+        }
+
+        #descricao {
+            padding: 5px;
         }
 
         #linha {
@@ -112,10 +116,10 @@
                 <td><%=livro.nome%></td>
                 <td><%=livro.autor%></td>
                 <td>R$ <%=livro.valor%></td>
-                <td><%=livro.descricao%></td>
+                <td id="descricao"><%=livro.descricao%></td>
                 <td><%=livro.paginas%></td>
                 <td><%=livro.editora%></td>
-                <td><%=livro.dataPubli%></td>
+                <td><%=livro.anoPubli%></td>
                 <td id="foto">
                     <img src="/uploads/livros/<%=livro.fotoCapa%>" alt="foto de algum livro" width="130px" />
                 </td>
