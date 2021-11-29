@@ -1,7 +1,7 @@
 /*
 * @bainloko
 * PROGRAMACAO IV
-* 13/09/2021
+* 13/09/2021 -> 29/11/2021
 */
 
 //imports das bibliotecas iniciais, sessão, secret, middleware para mensagens e a declaração da porta a ser usada

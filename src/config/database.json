@@ -1,26 +1,26 @@
 {
-    "development": {
-      "username": "postgres",
-      "password": "postgres",
-      "database": "info2021-1",
-      "dialect": "postgres",
-      "host": "localhost",
-      "define": {
-          "timestamps": true
-      }
-    },
-    "test": {
-      "username": "postgres",
-      "password": "postgres",
-      "database": "info2021-1",
-      "dialect": "postgres",
-      "host": "localhost"
-    },
-    "production": {
-      "username": "postgres",
-      "password": "postgres",
-      "database": "info2021-1",
-      "dialect": "postgres",
-      "host": "localhost"
+  "development": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "info2021-1",
+    "dialect": "postgres",
+    "host": "localhost",
+    "define": {
+        "timestamps": true
     }
+  },
+  "test": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "info2021-1",
+    "dialect": "postgres",
+    "host": "localhost"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "info2021-1",
+    "dialect": "postgres",
+    "host": "localhost"
   }
+}

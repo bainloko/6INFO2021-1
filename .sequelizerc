@@ -1,4 +1,4 @@
-//.sequelizerc
+//.sequelizerc configurações
 
 const path = require("path");
 
