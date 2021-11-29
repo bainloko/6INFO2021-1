@@ -5,6 +5,7 @@
 */
 
 const Usuario = require("../model/Usuario");
+const Logs = require("../model/Logs");
 const { Op } = require("sequelize");
 const bcrypt = require("bcrypt");
 const { unlink } = require("fs/promises");
@@ -20,7 +21,7 @@ async function abreAdd(req, res){
 }
 
 async function add(req, res){
-    var { nome, email, senha } = req.body;
+    var { nome, email, senha, permissao } = req.body;
 
     try {
         senha = bcrypt.hashSync(senha, 10);
@@ -29,7 +30,7 @@ async function add(req, res){
             var foto = req.file.filename;
         }
 
-        await Usuario.create({ nome, email, senha, foto }).then((usuario) => {
+        await Usuario.create({ nome, email, senha, foto, permissao }).then((usuario) => {
             req.flash("msg", "O usuário " + usuario.nome + " foi criado com sucesso!");
             res.redirect("/admin/usuarios");
         });
@@ -42,7 +43,7 @@ async function add(req, res){
 async function list(req, res){
     try {
         const usuarios = await Usuario.findAll();
-        res.render("usuarios/list.ejs", { "Usuarios": usuarios, msg: req.flash("msg"), logado: req.user });
+        res.render("usuarios/list.ejs", { Usuarios: usuarios, msg: req.flash("msg"), logado: req.user });
     } catch(error) {
         res.send("Erro uController list: " + error + ". Tente novamente mais tarde...");
         console.log("Erro uController list: " + error + ". Tente novamente mais tarde...");
@@ -59,7 +60,7 @@ async function listFiltro(req, res){
             },
         });
 
-        res.render("usuarios/list.ejs", { "Usuarios": usuarios, msg: req.flash("msg"), logado: req.user });
+        res.render("usuarios/list.ejs", { Usuarios: usuarios, msg: req.flash("msg"), logado: req.user });
     } catch(error) {
         res.send("Erro uController listFiltro: " + error + ". Tente novamente mais tarde...");
         console.log("Erro uController listFiltro: " + error + ". Tente novamente mais tarde...");
@@ -87,6 +88,7 @@ async function edit(req, res){
 
         usuario.nome = req.body.nome;
         usuario.email = req.body.email;
+        usuario.permissao = req.body.permissao;
 
         if (req.file != undefined){
             let diretorio = path.join(__dirname); //acha a localização atual
@@ -108,23 +110,27 @@ async function edit(req, res){
 async function del(req, res){
     try {
         const deletar = req.params.id;
-        let nome = req.params.nome, email = req.params.email;
 
         if (deletar == req.user.id){
             req.flash("msg", "O usuário logado não pode ser deletado!");
+            res.redirect("/admin/usuarios");
         } else {
             const usuario = await Usuario.findByPk(deletar); //acha o usuário atual pela primary key
+            let nome = usuario.nome, email = usuario.email;
 
             let diretorio = path.join(__dirname); //acha a localização atual
             diretorio = path.normalize(diretorio + "/../public/uploads/usuarios/" + usuario.foto); //concatena o caminho do arquivo desejado
             await unlink(diretorio); //deleta o arquivo
 
             await usuario.destroy().then(() => {
-                req.flash("msg", "O usuário " + nome + " (" + email + ")" + " foi deletado com sucesso!");
+                let idDeletado = deletar;
+                let log = "O usuário " + nome + " (" + email + ")" + " foi deletado com sucesso!";
+
+                Logs.create({ nome, idDeletado, log });
+                req.flash("msg", log);
                 res.redirect("/admin/usuarios");
             });
         }
-        
     } catch(error) {
         res.send("Erro uController del: " + error + ". Tente novamente mais tarde...");
         console.log("Erro uController del: " + error + ". Tente novamente mais tarde...");

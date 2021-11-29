@@ -80,7 +80,7 @@
 </head>
 <body>
     <nav>
-        <span><a href="/admin/usuarios/add">Para adicionar outro usuário...</a></span><span><a href="/admin">Voltar para a página inicial</a></span><span><a href="/admin/sair">Sair</a></span>
+        <span><a href="/admin/usuarios/add">Para adicionar outro usuário...</a></span><span><a href="/admin">Voltar para a página inicial</a></span><span style="float: right;"><a href="/admin/sair">Sair</a></span>
         <br>
         <h4>Usuário logado: <%=logado.nome%>, <%=logado.email%></h4>
     </nav>
@@ -98,6 +98,7 @@
                 <th>Nome</th>
                 <th>E-mail</th>
                 <th>Foto</th>
+                <th>Permissão</th>
                 <th>|</th>
                 <th>Ações</th>
             </tr>
@@ -109,6 +110,7 @@
                 <td id="foto">
                     <img src="/uploads/usuarios/<%=usuario.foto%>" alt="foto de algum usuário" width="120px" />
                 </td>
+                <td><%=usuario.permissao%></td>
                 <td id="linha">
                     <label>|</label>
                     <label>|</label>
@@ -144,7 +146,7 @@
     </article>
     <footer>
         <br>
-        <h3>© Kauã Maia, 2021 - Contato <a href="https://github.com/bainloko">github.com/bainloko</a></h3>
+        <h3>© Kauã Maia, 2021 - Contato: <a href="https://github.com/bainloko">github.com/bainloko</a></h3>
     </footer>
 </body>
 </html>

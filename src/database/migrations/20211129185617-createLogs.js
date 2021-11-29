@@ -1,7 +1,7 @@
 /*
 * @bainloko
 * PROGRAMACAO IV
-* 27/09/2021, 28/10/2021
+* 29/11/2021
 */
 
 'use strict';
@@ -13,7 +13,7 @@ module.exports = {
      */
 
     try {
-      await queryInterface.createTable("Usuarios", {
+      await queryInterface.createTable("Logs", {
         id: {
           type: Sequelize.BIGINT,
           primaryKey: true,
@@ -26,22 +26,14 @@ module.exports = {
           allowNull: false,
         },
   
-        email: {
-          type: Sequelize.STRING,
+        idDeletado: {
+          type: Sequelize.BIGINT,
           allowNull: false,
-        },
-        
-        senha: {
-          type: Sequelize.STRING,
-          allowNull: false,
-        },
-  
-        foto: {
-          type: Sequelize.STRING,
         },
 
-        permissao: {
+        log: {
           type: Sequelize.STRING,
+          allowNull: false,
         },
   
         createdAt: {
@@ -65,7 +57,7 @@ module.exports = {
      */
     
     try {
-      await queryInterface.dropTable("Usuarios");
+      await queryInterface.dropTable("Logs");
     } catch (error) {
       console.log("Erro " + error + ". Tente novamente mais tarde...");
     }

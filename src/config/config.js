@@ -4,9 +4,11 @@
 * 04/10/2021
 */
 
+const env = require("../env");
+
 module.exports = {
     "username": "postgres",
-    "password": "postgres",
+    "password": env.password,
     "database": "info2021-1",
     "dialect": "postgres",
     "host": "localhost",

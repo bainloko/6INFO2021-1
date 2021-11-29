@@ -6,14 +6,13 @@
 
 const passport = require("../config/passport");
 const logar = passport.authenticate("local", {
-    successReturnToOrRedirect: "/admin",
     failureRedirect: "/admin/login",
     failureFlash: true,
 });
 
 async function abreLogin(req, res){
     try {
-        res.render("auth.ejs", { msg: req.flash("loginMessage") });
+        res.render("auth.ejs", { msg: req.flash("loginMessage"), returnTo: req.flash("returnTo") });
     } catch(error) {
         res.send("Erro loginController abreLogin: " + error + ". Tente novamente mais tarde...");
         console.log("Erro loginController abreLogin: " + error + ". Tente novamente mais tarde...");

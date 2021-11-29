@@ -42,7 +42,7 @@
         }
 
         label {
-            width: 90px;
+            width: 130px;
             display: inline-block;
             text-align: right;
             font-size: 21px;
@@ -51,7 +51,7 @@
         input {
             border: 1px solid #999;
             margin-top: 3px;
-            width: calc(100% - 115px);
+            width: calc(100% - 155px);
             font-size: 14px;
             display: inline-block;
         }
@@ -61,7 +61,7 @@
         }
 
         #fotoInp {
-            width: calc(100% - 112px);
+            width: calc(100% - 151px);
         }
 
         #addInp {
@@ -84,11 +84,17 @@
         #acoes {
             text-decoration: none;
         }
+
+        select {
+            margin-top: 5px;
+            margin-left: -5px;
+            padding: 5px;
+        }
     </style>
 </head>
 <body>
     <nav>
-        <span><a href="/admin/usuarios">Para ir à listagem dos usuários...</a></span><span><a href="/admin">Voltar para a página inicial</a></span><span><a href="/admin/sair">Sair</a></span>
+        <span><a href="/admin/usuarios">Para ir à listagem dos usuários...</a></span><span><a href="/admin">Voltar para a página inicial</a></span><span style="float: right;"><a href="/admin/sair">Sair</a></span>
         <br>
         <h4>Usuário logado: <%=logado.nome%>, <%=logado.email%></h4> 
     </nav>
@@ -111,6 +117,21 @@
                 </li>
                 <li>
                     <span class="obrigatorio">*</span><label>Foto:&ensp;</label><input id="fotoInp" type="file" name="foto" required />
+                </li>
+                <li>
+                    <span class="obrigatorio">*</span><label>Permissão:&ensp;</label>
+                    <select name="permissao" required>
+                        <option disabled hidden selected>Selecione uma permissão</option>
+                        <% if (logado.permissao == "admin"){ %>
+                        <option value="admin">Administrador</option>
+                        <option value="funcionario">Funcionário</option>
+                        <option value="user">Usuário</option>
+                        <% } else if (logado.permissao == "funcionario"){ %>
+                        <option value="user">Usuário</option>
+                        <% } else { %>
+                        <%="Ops..."%>
+                        <% } %>
+                    </select>
                     <input id="addInp" type="submit" value="Adicionar Usuário" />
                 </li>
             </ul>
@@ -118,7 +139,7 @@
     </article>
     <footer>
         <br>
-        <h3>© Kauã Maia, 2021 - Contato <a href="https://github.com/bainloko">github.com/bainloko</a></h3>
+        <h3>© Kauã Maia, 2021 - Contato: <a href="https://github.com/bainloko">github.com/bainloko</a></h3>
     </footer>
 </body>
 </html>

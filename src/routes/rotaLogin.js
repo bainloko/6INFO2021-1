@@ -22,9 +22,15 @@ roteador.post("/login", (req, res, next) => {
         return next();
     } else {
         req.flash("loginMessage", "Erro ao conectar ao Banco de Dados!");
+        res.redirect("/admin/login");
+    }
+}, loginController.logar, (req, res) => {
+    if (req.body.returnTo != "/admin" && req.body.returnTo !== "/" && req.body.returnTo != ""){
+        res.redirect(req.body.returnTo);
+    } else {
         res.redirect("/admin");
     }
-}, loginController.logar);
+});
 
 //SAIR
 roteador.get("/sair", loginController.sair);

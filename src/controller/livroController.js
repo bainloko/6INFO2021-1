@@ -5,6 +5,7 @@
 */
 
 const Livro = require("../model/Livro");
+const Logs = require("../model/Logs");
 const { Op } = require("sequelize");
 const { unlink } = require("fs/promises");
 const path = require("path");
@@ -104,16 +105,20 @@ async function edit(req, res){
 async function del(req, res){
     try {
         const deletar = req.params.id;
-        let nome = req.params.nome;
-
-        const livro = await Livro.findByPk(deletar); //acha o livro atual pela primary key
         
+        const livro = await Livro.findByPk(deletar); //acha o livro atual pela primary key
+        let nome = livro.nome;
+
         let diretorio = path.join(__dirname); //acha a localização atual
         diretorio = path.normalize(diretorio + "/../public/uploads/livros/" + livro.fotoCapa); //concatena o caminho do arquivo desejado
         await unlink(diretorio); //deleta o arquivo
 
         await livro.destroy().then(() => {
-            req.flash("msg", "O livro " + nome + " foi deletado com sucesso!");
+            let idDeletado = deletar;
+            let log = "O livro " + nome + " foi deletado com sucesso!";
+            
+            Logs.create({ nome, idDeletado, log });
+            req.flash("msg", log);
             res.redirect("/admin/livros");
         });
     } catch(error) {

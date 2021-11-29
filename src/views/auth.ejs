@@ -71,6 +71,7 @@
         <form method="post">
             <label>E-mail:&ensp;</label><input type="email" name="email" placeholder="Digite seu e-mail" required /><br>
             <label>Senha:&ensp;</label><input type="password" name="senha" placeholder="Digite sua senha" required /><br>
+            <input type="hidden" name="returnTo" value="<%=returnTo%>" />
             <input id="addInp" type="submit" value="Entrar" />
         </form>
         <br>
@@ -85,7 +86,7 @@
     </article>
     <footer>
         <br>
-        <h3>© Kauã Maia, 2021 - Contato <a href="https://github.com/bainloko">github.com/bainloko</a></h3>
+        <h3>© Kauã Maia, 2021 - Contato: <a href="https://github.com/bainloko">github.com/bainloko</a></h3>
     </footer>
 </body>
 </html>

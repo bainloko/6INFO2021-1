@@ -22,8 +22,7 @@
 
         span {
             margin: 1px;
-            margin-right: 1em;
-            padding-right: 2px;
+            padding: 10px;
             font-size: 18px;
             display: inline-block;
         }
@@ -39,16 +38,16 @@
 </head>
 <body>
     <nav>
-        <span><a href="/admin/usuarios">Acesse o subsistema Usuários aqui</a></span><span><a href="/admin/livros">Acesse o subsistema Livros aqui</a></span><span><a href="/admin/sair">Sair</a></span>
+        <span><a href="/admin/usuarios">Acesse o subsistema Usuários aqui</a></span><span><a href="/admin/livros">Acesse o subsistema Livros aqui</a></span><span style="float: right;"><a href="/admin/sair">Sair</a></span>
         <br>
         <h4>Usuário logado: <%=logado.nome%>, <%=logado.email%></h4> 
     </nav>
     <header>
-        <h1>Página inicial "/admin"<h1>
+        <h1>Página inicial<h1>
     </header>
     <article>
-        <p>para projetos futuros... usar o código deste projeto como base (crud básico, autenticação, error handlers, timeout, entre outras coisas, muito funcional)</p>
-        <p>e 1: achar um template design, 2: grupos com permissões, 3: redirecionar o usuário pra página original após fazer o login</p>
+        <p>para projetos futuros... usar o código deste projeto como base (crud básico, autenticação, error handlers (HTTP, BD), timeout, grupos com permissões, redirecionamento após login (rotas), entre outras coisas, muito funcional)</p>
+        <p>e 1: achar um template design</p>
         <hr>
         <h3 id="mensagem">
             <% if (msg){ %>
@@ -60,7 +59,7 @@
     </article>
     <footer>
         <br>
-        <h3>© Kauã Maia, 2021 - Contato <a href="https://github.com/bainloko">github.com/bainloko</a></h3>
+        <h3>© Kauã Maia, 2021 - Contato: <a href="https://github.com/bainloko">github.com/bainloko</a></h3>
     </footer>
 </body>
 </html>

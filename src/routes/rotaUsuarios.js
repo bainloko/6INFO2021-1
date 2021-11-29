@@ -11,9 +11,23 @@ const upload = require("../config/multerUsuarios");
 
 //CREATE
 //ABRE ADD
-roteador.get("/add", usuarioController.abreAdd);
+roteador.get("/add", (req, res, next) => {
+    if (req.user.permissao == "admin" || "funcionario"){
+        return next();
+    } else {
+        req.flash("msg", "Você não tem permissão para adicionar novos usuários!");
+        res.redirect("/admin/usuarios");
+    }
+}, usuarioController.abreAdd);
 //ADD
-roteador.post("/add", upload.single("foto"), usuarioController.add);
+roteador.post("/add", (req, res, next) => {
+    if (req.user.permissao == "admin" || "funcionario"){
+        return next();
+    } else {
+        req.flash("msg", "Você não tem permissão para adicionar novos usuários!");
+        res.redirect("/admin/usuarios");
+    }
+}, upload.single("foto"), usuarioController.add);
 
 //READ
 //LIST
@@ -23,11 +37,32 @@ roteador.post("/", usuarioController.listFiltro);
 
 //UPDATE
 //ABRE EDIT
-roteador.get("/edit/:id", usuarioController.abreEdit);
+roteador.get("/edit/:id", (req, res, next) => {
+    if (req.user.permissao == "admin"){
+        return next();
+    } else {
+        req.flash("msg", "Você não tem permissão para editar usuários!");
+        res.redirect("/admin/usuarios");
+    }
+}, usuarioController.abreEdit);
 //EDIT
-roteador.post("/edit/:id", upload.single("foto"), usuarioController.edit);
+roteador.post("/edit/:id", (req, res, next) => {
+    if (req.user.permissao == "admin"){
+        return next();
+    } else {
+        req.flash("msg", "Você não tem permissão para editar usuários!");
+        res.redirect("/admin/usuarios");
+    }
+}, upload.single("foto"), usuarioController.edit);
 
 //DELETE
-roteador.get("/del/:id", usuarioController.del);
+roteador.get("/del/:id", (req, res, next) => {
+    if (req.user.permissao == "admin"){
+        return next();
+    } else {
+        req.flash("msg", "Você não tem permissão para deletar usuários!");
+        res.redirect("/admin/usuarios");
+    }
+}, usuarioController.del);
 
 module.exports = roteador; //exporta a lista de rotas da aplicação - CRUD (create, read, update, delete)

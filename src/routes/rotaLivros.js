@@ -11,9 +11,23 @@ const upload = require("../config/multerLivros");
 
 //CREATE
 //ABRE ADD
-roteador.get("/add", livroController.abreAdd);
+roteador.get("/add", (req, res, next) => {
+    if (req.user.permissao == "admin" || "funcionario"){
+        return next();
+    } else {
+        req.flash("msg", "Você não tem permissão para cadastrar novos livros!");
+        res.redirect("/admin/livros");
+    }
+}, livroController.abreAdd);
 //ADD
-roteador.post("/add", upload.single("fotoCapa"), livroController.add);
+roteador.post("/add", (req, res, next) => {
+    if (req.user.permissao == "admin" || "funcionario"){
+        return next();
+    } else {
+        req.flash("msg", "Você não tem permissão para cadastrar novos livros!");
+        res.redirect("/admin/livros");
+    }
+}, upload.single("fotoCapa"), livroController.add);
 
 //READ
 //LIST
@@ -23,11 +37,32 @@ roteador.post("/", livroController.listFiltro);
 
 //UPDATE
 //ABRE EDIT
-roteador.get("/edit/:id", livroController.abreEdit);
+roteador.get("/edit/:id", (req, res, next) => {
+    if (req.user.permissao == "admin" || "funcionario"){
+        return next();
+    } else {
+        req.flash("msg", "Você não tem permissão para editar livros!");
+        res.redirect("/admin/livros");
+    }
+}, livroController.abreEdit);
 //EDIT
-roteador.post("/edit/:id", upload.single("fotoCapa"), livroController.edit);
+roteador.post("/edit/:id", (req, res, next) => {
+    if (req.user.permissao == "admin" || "funcionario"){
+        return next();
+    } else {
+        req.flash("msg", "Você não tem permissão para editar livros!");
+        res.redirect("/admin/livros");
+    }
+}, upload.single("fotoCapa"), livroController.edit);
 
 //DELETE
-roteador.get("/del/:id", livroController.del);
+roteador.get("/del/:id", (req, res, next) => {
+    if (req.user.permissao == "admin" || "funcionario"){
+        return next();
+    } else {
+        req.flash("msg", "Você não tem permissão para deletar livros!");
+        res.redirect("/admin/livros");
+    }
+}, livroController.del);
 
 module.exports = roteador; //exporta a lista de rotas da aplicação - CRUD (create, read, update, delete)
