@@ -17,9 +17,14 @@ Logs.init(conexao);
 
 function teste(){
     try {
-        conexao.authenticate();
-        console.log("A conexão ao Banco de Dados foi estabelecida com sucesso!");
-        return 0;
+        if (conexao.authenticate()){
+            console.log("A conexão ao Banco de Dados foi estabelecida com sucesso!");
+            return 0;
+        } else {
+            console.log("Erro ao conectar ao Banco de Dados: " + error + "!");
+            conexao.close(dbConfig);
+            return 1;
+        }
     } catch(error) {
         console.log("Erro ao conectar ao Banco de Dados: " + error + "!");
         conexao.close(dbConfig);
