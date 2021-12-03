@@ -31,9 +31,23 @@ roteador.post("/add", (req, res, next) => {
 
 //READ
 //LIST
-roteador.get("/", livroController.list);
+roteador.get("/", (req, res, next) => {
+    if (req.user.permissao == "admin" || "funcionario" || "usuario"){
+        return next();
+    } else {
+        req.flash("msg", "Você não tem permissão para abrir a listagem!");
+        res.redirect("/admin/livros");
+    }
+}, livroController.list);
 //LIST FILTRO
-roteador.post("/", livroController.listFiltro);
+roteador.post("/", (req, res, next) => {
+    if (req.user.permissao == "admin" || "funcionario" || "usuario"){
+        return next();
+    } else {
+        req.flash("msg", "Você não tem permissão para abrir a listagem!");
+        res.redirect("/admin/livros");
+    }
+}, livroController.listFiltro);
 
 //UPDATE
 //ABRE EDIT
