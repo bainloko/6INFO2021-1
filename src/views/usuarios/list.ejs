@@ -110,7 +110,17 @@
                 <td id="foto">
                     <img src="/uploads/usuarios/<%=usuario.foto%>" alt="foto de algum usuário" width="120px" />
                 </td>
-                <td><%=usuario.permissao%></td>
+                <td>
+                    <% if (usuario.permissao == "admin"){ %>
+                    <%="Administrador"%>
+                    <% } else if (usuario.permissao == "funcionario"){ %>
+                    <%="Funcionário"%>
+                    <% } else if (usuario.permissao == "usuario"){ %>
+                    <%="Usuário"%>
+                    <% } else { %>
+                    <%="Você não está logado! Seu pilantra!!! Sai do meu sistema!!!"%>
+                    <% } %>
+                </td>
                 <td id="linha">
                     <label>|</label>
                     <label>|</label>
