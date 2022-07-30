@@ -28,6 +28,7 @@
     "sequelize": "^6.6.5"
   },
   "devDependencies": {
+    "@doyensec/electronegativity": "^1.9.1",
     "nodemon": "^2.0.19",
     "sequelize-cli": "^6.4.1"
   }
